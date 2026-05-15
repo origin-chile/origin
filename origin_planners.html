@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Origin Planners — Organízate</title>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0D0D14;--bg2:#13131F;--white:#F5F0FF;--gray1:#2A2A3E;--gray3:#6060A0;--gray4:#A0A0C0;--teal:#14B8A6;--teal2:#0F766E;--purple:#8B5CF6;--gold:#F59E0B;--green:#22C55E;--pink:#EC4899;--sans:'Cabinet Grotesk',sans-serif;--serif:'Instrument Serif',Georgia,serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--white);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(13,13,20,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:32px;height:32px;background:var(--gray1);border-radius:7px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0}
+.lm-ring{position:absolute;width:20px;height:20px;border-radius:50%;border:1.5px solid var(--purple)}
+.lm-dot{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--purple);bottom:6px;right:6px}
+.lm-line{position:absolute;width:12px;height:1.5px;background:var(--purple);top:11px;left:5px;transform:rotate(-35deg)}
+.logo-word{font-size:18px;font-weight:500;letter-spacing:-0.03em;color:var(--white)}
+.logo-word span{color:var(--purple)}
+.nav-back{color:var(--gray4);font-size:.85rem;text-decoration:none;transition:color .2s}
+.nav-back:hover{color:var(--white)}
+.hero{padding:8rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+.hero-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:300px;border-radius:50%;background:radial-gradient(ellipse,rgba(20,184,166,.18) 0%,transparent 70%);pointer-events:none}
+.hero h1{font-family:var(--serif);font-style:italic;font-size:clamp(2.5rem,5vw,4rem);line-height:1.1;position:relative;z-index:1;margin-bottom:.8rem}
+.hero h1 strong{font-style:normal;font-family:var(--sans);font-weight:900;color:var(--teal)}
+.hero p{font-size:1rem;color:var(--gray4);max-width:440px;margin:0 auto;position:relative;z-index:1;line-height:1.7}
+.planners-section{padding:3rem 2rem 6rem;max-width:1100px;margin:0 auto}
+.planners-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.plan-card{background:var(--bg2);border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;transition:all .3s;display:flex;flex-direction:column}
+.plan-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.18);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.plan-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative;overflow:hidden}
+.plan-glow{position:absolute;inset:0;background:radial-gradient(circle at center,var(--gc) 0%,transparent 70%);opacity:.4}
+.plan-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.plan-tag{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
+.plan-title{font-family:var(--serif);font-style:italic;font-size:1.25rem;line-height:1.3;margin-bottom:.5rem}
+.plan-desc{font-size:.82rem;color:var(--gray4);line-height:1.6;flex:1;margin-bottom:.8rem}
+.plan-items{display:flex;flex-direction:column;gap:.3rem;margin-bottom:1.2rem}
+.plan-item{display:flex;align-items:flex-start;gap:.5rem;font-size:.78rem;color:var(--gray4)}
+.plan-item::before{content:'✓';font-weight:700;flex-shrink:0;margin-top:1px}
+.plan-footer{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid rgba(255,255,255,.07)}
+.plan-price{font-family:var(--serif);font-size:1.3rem}
+.plan-info{font-size:.7rem;color:var(--gray4);margin-top:.1rem}
+.btn-plan{padding:.6rem 1.3rem;border-radius:100px;font-weight:700;font-size:.82rem;border:none;cursor:pointer;transition:all .2s;color:#000;text-decoration:none;display:inline-block}
+.btn-plan:hover{transform:translateY(-1px);filter:brightness(1.1)}
+.modal-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.88);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:1.5rem}
+.modal-overlay.open{display:flex}
+.modal{background:var(--bg2);border:1px solid rgba(20,184,166,.2);border-radius:24px;max-width:460px;width:100%;padding:2.5rem;position:relative;animation:pop .25s ease}
+@keyframes pop{from{opacity:0;transform:scale(.94) translateY(12px)}to{opacity:1;transform:none}}
+.modal-close{position:absolute;top:1.2rem;right:1.2rem;background:rgba(255,255,255,.07);border:none;color:var(--white);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:rgba(255,255,255,.14)}
+.modal-emoji{font-size:2.5rem;margin-bottom:1rem}
+.modal-tag{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:.4rem}
+.modal-title{font-family:var(--serif);font-style:italic;font-size:1.5rem;margin-bottom:.5rem}
+.modal-price{font-family:var(--serif);font-size:2rem;color:var(--teal);margin-bottom:.4rem}
+.modal-instant{display:inline-flex;align-items:center;gap:.4rem;background:rgba(20,184,166,.1);border:1px solid rgba(20,184,166,.25);color:var(--teal);font-size:.72rem;font-weight:700;padding:.3rem .8rem;border-radius:100px;margin-bottom:1.5rem}
+.modal-divider{height:1px;background:rgba(255,255,255,.07);margin-bottom:1.5rem}
+.modal-item{display:flex;align-items:flex-start;gap:.6rem;font-size:.85rem;color:var(--gray4);margin-bottom:.4rem}
+.modal-item::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
+.pay-btn{display:block;width:100%;padding:.95rem;background:var(--teal);color:#000;border:none;border-radius:12px;font-family:var(--sans);font-weight:800;font-size:.95rem;cursor:pointer;margin-top:1.5rem;transition:all .2s}
+.pay-btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.modal-legal{margin-top:.8rem;font-size:.7rem;color:var(--gray3);text-align:center;line-height:1.5}
+footer{background:var(--bg);border-top:1px solid rgba(255,255,255,.06);padding:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:.78rem;color:var(--gray3)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.78rem;color:var(--gray3);text-decoration:none}
+.footer-links a:hover{color:var(--white)}
+</style>
+</head>
+<body>
+<nav>
+  <a href="origin_index.html" class="nav-logo">
+    <div class="logo-mark"><div class="lm-ring"></div><div class="lm-dot"></div><div class="lm-line"></div></div>
+    <div class="logo-word">ORIG<span>IN</span></div>
+  </a>
+  <a href="origin_index.html" class="nav-back">← Volver a Origin</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-glow"></div>
+  <p style="font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.8rem;position:relative;z-index:1">Origin Planners · Organízate</p>
+  <h1>Planners que<br><strong>realmente usas.</strong></h1>
+  <p>Excel oscuro, fórmulas automáticas y diseño premium. Descarga, personaliza y empieza hoy.</p>
+</div>
+
+<div class="planners-section">
+  <div class="planners-grid">
+
+    <div class="plan-card">
+      <div class="plan-thumb" style="background:linear-gradient(135deg,#0D1A3A,#1A2A5C)">
+        <div class="plan-glow" style="--gc:rgba(139,92,246,.8)"></div>
+        <span style="position:relative;z-index:1;font-size:3.5rem">📅</span>
+      </div>
+      <div class="plan-body">
+        <div class="plan-tag" style="color:var(--purple)">Planner Anual</div>
+        <div class="plan-title">Planner Anual 2025</div>
+        <div class="plan-desc">Tu año completo en un Excel. Metas anuales, seguimiento mensual, tracker de hábitos y reflexiones.</div>
+        <div class="plan-items">
+          <div class="plan-item">Visión y metas del año por área de vida</div>
+          <div class="plan-item">12 sheets mensuales con intención, metas y semanas</div>
+          <div class="plan-item">Tracker de hábitos integrado en cada mes</div>
+          <div class="plan-item">Reflexión mensual y panorama anual</div>
+          <div class="plan-item">Diseño oscuro premium, personalizable</div>
+        </div>
+        <div class="plan-footer">
+          <div><div class="plan-price" style="color:var(--purple)">$5.990 CLP</div><div class="plan-info">Excel descargable · Editable</div></div>
+          <a class="btn-plan" style="background:var(--purple);color:white" onclick="openModal('anual')">Comprar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-card">
+      <div class="plan-thumb" style="background:linear-gradient(135deg,#0D2A1A,#1A4A2A)">
+        <div class="plan-glow" style="--gc:rgba(34,197,94,.8)"></div>
+        <span style="position:relative;z-index:1;font-size:3.5rem">✅</span>
+      </div>
+      <div class="plan-body">
+        <div class="plan-tag" style="color:var(--green)">Tracker de Hábitos</div>
+        <div class="plan-title">Tracker de Hábitos 2025</div>
+        <div class="plan-desc">Registra tus hábitos diarios en trackers de 30, 60 y 90 días con estadísticas automáticas y semáforo visual.</div>
+        <div class="plan-items">
+          <div class="plan-item">Configura hasta 14 hábitos personalizados</div>
+          <div class="plan-item">Trackers de 30, 60 y 90 días</div>
+          <div class="plan-item">% de cumplimiento automático por hábito</div>
+          <div class="plan-item">Estadísticas con niveles automáticos</div>
+          <div class="plan-item">Reflexión semanal integrada</div>
+        </div>
+        <div class="plan-footer">
+          <div><div class="plan-price" style="color:var(--green)">$4.990 CLP</div><div class="plan-info">Excel descargable · Editable</div></div>
+          <a class="btn-plan" style="background:var(--green);color:#000" onclick="openModal('habitos')">Comprar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-card">
+      <div class="plan-thumb" style="background:linear-gradient(135deg,#1A1A0D,#2A2A0D)">
+        <div class="plan-glow" style="--gc:rgba(245,158,11,.8)"></div>
+        <span style="position:relative;z-index:1;font-size:3.5rem">💰</span>
+      </div>
+      <div class="plan-body">
+        <div class="plan-tag" style="color:var(--gold)">Organizador Financiero</div>
+        <div class="plan-title">Organizador de Finanzas 2025</div>
+        <div class="plan-desc">Controla tus ingresos, gastos, deudas y metas de ahorro con fórmulas automáticas y resumen anual.</div>
+        <div class="plan-items">
+          <div class="plan-item">12 sheets mensuales con presupuesto vs real</div>
+          <div class="plan-item">Registro de transacciones con categorías</div>
+          <div class="plan-item">Metas de ahorro con barra de progreso</div>
+          <div class="plan-item">Tracker de deudas con meses restantes</div>
+          <div class="plan-item">Resumen anual automático</div>
+        </div>
+        <div class="plan-footer">
+          <div><div class="plan-price" style="color:var(--gold)">$5.990 CLP</div><div class="plan-info">Excel descargable · Editable</div></div>
+          <a class="btn-plan" style="background:var(--gold);color:#000" onclick="openModal('finanzas')">Comprar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-card" style="border-color:rgba(20,184,166,.3)">
+      <div class="plan-thumb" style="background:linear-gradient(135deg,#0D2A2A,#0D3A2A)">
+        <div class="plan-glow" style="--gc:rgba(20,184,166,.7)"></div>
+        <span style="position:relative;z-index:1;font-size:3.5rem">🎯</span>
+      </div>
+      <div class="plan-body">
+        <div class="plan-tag" style="color:var(--teal)">Pack completo · Ahorra 30%</div>
+        <div class="plan-title">Los 3 planners juntos</div>
+        <div class="plan-desc">Planner Anual + Tracker de Hábitos + Organizador Financiero. El sistema completo de organización personal.</div>
+        <div class="plan-items">
+          <div class="plan-item">Los 3 planners en un solo pago</div>
+          <div class="plan-item">Descarga los 3 archivos Excel</div>
+          <div class="plan-item">Ahorra $4.980 vs comprar por separado</div>
+        </div>
+        <div class="plan-footer">
+          <div><div class="plan-price" style="color:var(--teal)">$11.990 <span style="font-size:.72rem;font-family:var(--sans);color:var(--gray4);font-weight:400;text-decoration:line-through">$16.970</span></div><div class="plan-info">3 Excel · Descarga inmediata</div></div>
+          <a class="btn-plan" style="background:var(--teal);color:#000" onclick="openModal('pack')">Comprar pack</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <a href="origin_index.html" style="display:flex;align-items:center;gap:8px;text-decoration:none">
+    <div class="logo-mark" style="width:26px;height:26px"><div class="lm-ring" style="width:17px;height:17px"></div><div class="lm-dot" style="width:5px;height:5px;bottom:5px;right:5px"></div><div class="lm-line" style="width:10px;top:9px;left:4px"></div></div>
+    <div class="logo-word" style="font-size:15px">ORIG<span>IN</span></div>
+  </a>
+  <div class="footer-copy">© 2025 Origin · origin.contacto.chile@gmail.com</div>
+  <div class="footer-links">
+    <a href="origin_index.html">Inicio</a>
+    <a href="origin_tests.html">Tests</a>
+    <a href="origin_prompts.html">Prompts</a>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeOut(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-emoji" id="mEmoji">📅</div>
+    <div class="modal-tag" id="mTag"></div>
+    <div class="modal-title" id="mTitle"></div>
+    <div class="modal-price" id="mPrice"></div>
+    <div class="modal-instant">⚡ Descarga inmediata</div>
+    <div class="modal-divider"></div>
+    <div id="mItems"></div>
+    <button class="pay-btn" onclick="goPay()">🔒 Pagar con Flow →</button>
+    <div class="modal-legal">Pago seguro con Flow · Chile · Compatible con Excel y Google Sheets.</div>
+  </div>
+</div>
+
+<script>
+const P={
+  anual:{e:'📅',tag:'Planner Anual 2025',title:'Planner Anual 2025',price:'$5.990 CLP',items:['12 sheets mensuales completos','Metas anuales por área de vida','Tracker de hábitos integrado','Reflexión mensual y panorama anual'],flow:'TU_TOKEN_PLANNER_ANUAL'},
+  habitos:{e:'✅',tag:'Tracker de Hábitos',title:'Tracker de Hábitos 2025',price:'$4.990 CLP',items:['Trackers de 30, 60 y 90 días','14 hábitos personalizables','% cumplimiento automático','Estadísticas con niveles automáticos'],flow:'TU_TOKEN_TRACKER_HABITOS'},
+  finanzas:{e:'💰',tag:'Organizador Financiero',title:'Organizador de Finanzas 2025',price:'$5.990 CLP',items:['12 meses con presupuesto vs real','Metas de ahorro con progreso','Tracker de deudas automático','Resumen anual completo'],flow:'TU_TOKEN_FINANZAS'},
+  pack:{e:'🎯',tag:'Pack Completo Planners',title:'Los 3 planners juntos',price:'$11.990 CLP',items:['Planner Anual 2025','Tracker de Hábitos 2025','Organizador de Finanzas 2025','Descarga los 3 archivos Excel'],flow:'TU_TOKEN_PACK_PLANNERS'}
+};
+let cur='';
+function openModal(k){const p=P[k];cur=k;document.getElementById('mEmoji').textContent=p.e;document.getElementById('mTag').textContent=p.tag;document.getElementById('mTitle').textContent=p.title;document.getElementById('mPrice').textContent=p.price;document.getElementById('mItems').innerHTML=p.items.map(i=>`<div class="modal-item">${i}</div>`).join('');document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
+function closeOut(e){if(e.target.id==='modalOverlay')closeModal();}
+function goPay(){const p=P[cur];if(p.flow.startsWith('TU_TOKEN')){alert('Próximamente. Escríbenos a origin.contacto.chile@gmail.com');return;}window.location.href='https://www.flow.cl/btn.php?token='+p.flow;}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+</script>
+</body>
+</html>

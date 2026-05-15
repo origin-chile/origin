@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pack 3 Planners 2026 — Origin</title>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0D0D14;--bg2:#13131F;--w:#F5F0FF;--g1:#2A2A3E;--g3:#6060A0;--g4:#A0A0C0;--pu:#8B5CF6;--tl:#14B8A6;--go:#F59E0B;--gr:#22C55E;--sans:'Cabinet Grotesk',sans-serif;--serif:'Instrument Serif',Georgia,serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--w);min-height:100vh}
+nav{padding:1.2rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(13,13,20,.9);position:sticky;top:0;z-index:10}
+.nl{display:flex;align-items:center;gap:9px;text-decoration:none}
+.lm{width:30px;height:30px;background:var(--g1);border-radius:7px;position:relative;overflow:hidden;flex-shrink:0}
+.lm-r{position:absolute;width:19px;height:19px;border-radius:50%;border:1.5px solid var(--pu);top:50%;left:50%;transform:translate(-50%,-50%)}
+.lm-d{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--pu);bottom:5px;right:5px}
+.lm-l{position:absolute;width:11px;height:1.5px;background:var(--pu);top:10px;left:4px;transform:rotate(-35deg)}
+.nw{font-size:17px;font-weight:500;letter-spacing:-.03em;color:var(--w)}
+.nw span{color:var(--pu)}
+.nav-back{color:var(--g4);font-size:.85rem;text-decoration:none}
+.nav-back:hover{color:var(--w)}
+.hero{text-align:center;padding:4rem 2rem 2rem;position:relative;overflow:hidden}
+.hglow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:500px;height:250px;border-radius:50%;background:radial-gradient(ellipse,rgba(20,184,166,.18) 0%,transparent 70%);pointer-events:none}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tl);margin-bottom:.8rem;position:relative;z-index:1}
+.hero h1{font-family:var(--serif);font-style:italic;font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.1;position:relative;z-index:1;margin-bottom:.7rem}
+.hero h1 strong{font-style:normal;font-family:var(--sans);font-weight:900;color:var(--tl)}
+.hero-sub{color:var(--g4);font-size:.95rem;max-width:420px;margin:0 auto 1.5rem;line-height:1.7;position:relative;z-index:1}
+.price-badge{display:inline-flex;align-items:center;gap:1rem;background:var(--bg2);border:1px solid rgba(20,184,166,.3);border-radius:100px;padding:.6rem 1.5rem;margin-bottom:2rem;position:relative;z-index:1}
+.price-now{font-family:var(--serif);font-size:1.8rem;color:var(--tl)}
+.price-old{font-size:.85rem;color:var(--g4);text-decoration:line-through}
+.price-save{font-size:.75rem;font-weight:700;color:var(--gr);background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);padding:.2rem .6rem;border-radius:100px}
+.wrap{max-width:900px;margin:0 auto;padding:0 2rem 4rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem;margin-bottom:2rem}
+.pcard{background:var(--bg2);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column}
+.pcard:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.16)}
+.pthumb{height:120px;display:flex;align-items:center;justify-content:center;font-size:2.8rem;position:relative;overflow:hidden}
+.pglow{position:absolute;inset:0;background:radial-gradient(circle at center,var(--gc) 0%,transparent 70%);opacity:.38}
+.pbody{padding:1.2rem;flex:1;display:flex;flex-direction:column}
+.ptag{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem}
+.ptitle{font-family:var(--serif);font-style:italic;font-size:1.1rem;line-height:1.25;margin-bottom:.5rem}
+.pdesc{font-size:.78rem;color:var(--g4);line-height:1.5;flex:1;margin-bottom:.8rem}
+.pitems{display:flex;flex-direction:column;gap:.25rem;margin-bottom:1rem}
+.pi{display:flex;align-items:flex-start;gap:.4rem;font-size:.74rem;color:var(--g4)}
+.pi::before{content:'✓';font-weight:700;flex-shrink:0;margin-top:1px}
+.pfooter{display:flex;align-items:center;justify-content:space-between;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.07)}
+.pinfo{font-size:.68rem;color:var(--g4)}
+.pbtn{padding:.55rem 1.2rem;border-radius:100px;font-weight:700;font-size:.8rem;border:none;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:.4rem}
+.pbtn:hover{transform:translateY(-1px);filter:brightness(1.1)}
+.note{background:rgba(20,184,166,.06);border:1px solid rgba(20,184,166,.2);border-radius:12px;padding:1.2rem 1.5rem;margin-bottom:1.5rem;font-size:.82rem;color:var(--g4);line-height:1.7}
+.note strong{color:var(--tl)}
+.disc{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.2rem 1.5rem;display:flex;gap:1rem}
+.disc-t{font-size:.78rem;color:var(--g4);line-height:1.6}
+.disc-t strong{color:var(--w)}
+footer{background:var(--bg);border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem}
+.fc{font-size:.75rem;color:var(--g3)}
+.fl{display:flex;gap:1.2rem}
+.fl a{font-size:.75rem;color:var(--g3);text-decoration:none}
+.fl a:hover{color:var(--w)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nl">
+    <div class="lm"><div class="lm-r"></div><div class="lm-d"></div><div class="lm-l"></div></div>
+    <div class="nw">ORIG<span>IN</span></div>
+  </a>
+  <a href="index.html" class="nav-back">← Volver a Origin</a>
+</nav>
+
+<div class="hero">
+  <div class="hglow"></div>
+  <div class="eyebrow">⭐ Pack completo · Origin Planners</div>
+  <h1>Los 3 planners.<br><strong>Un solo pago.</strong></h1>
+  <p class="hero-sub">Descarga los 3 planners de Origin 2026. Organiza tu año, tus hábitos y tus finanzas desde hoy.</p>
+  <div class="price-badge">
+    <div class="price-now">$11.990 CLP</div>
+    <div class="price-old">$16.970</div>
+    <div class="price-save">Ahorras $4.980</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="note">
+    <strong>📥 Cómo descargar tus planners:</strong> Haz clic en "Descargar" en cada planner. El archivo Excel se descargará automáticamente. Puedes abrirlos en Microsoft Excel o Google Sheets (importar desde Drive).
+  </div>
+
+  <div class="grid">
+
+    <div class="pcard">
+      <div class="pthumb" style="background:linear-gradient(135deg,#0D1A3A,#1A2A5C)">
+        <div class="pglow" style="--gc:rgba(139,92,246,.8)"></div>
+        <span style="position:relative;z-index:1">📅</span>
+      </div>
+      <div class="pbody">
+        <div class="ptag" style="color:var(--pu)">Planner Anual</div>
+        <div class="ptitle">Planner Anual 2026</div>
+        <div class="pdesc">Tu año completo. Visión, metas por área, seguimiento mensual y reflexiones.</div>
+        <div class="pitems">
+          <div class="pi">12 sheets mensuales completos</div>
+          <div class="pi">Metas anuales por área de vida</div>
+          <div class="pi">Tracker de hábitos en cada mes</div>
+          <div class="pi">Panorama anual y reflexión de cierre</div>
+        </div>
+        <div class="pfooter">
+          <div class="pinfo">Excel · Google Sheets</div>
+          <a href="https://raw.githubusercontent.com/diagnosticogeoterritorial-jpg/promptly/main/Planner_Anual_2026.xlsx" class="pbtn" style="background:var(--pu);color:white" download>↓ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pcard">
+      <div class="pthumb" style="background:linear-gradient(135deg,#0D2A1A,#1A4A2A)">
+        <div class="pglow" style="--gc:rgba(34,197,94,.8)"></div>
+        <span style="position:relative;z-index:1">✅</span>
+      </div>
+      <div class="pbody">
+        <div class="ptag" style="color:var(--gr)">Tracker de Hábitos</div>
+        <div class="ptitle">Tracker de Hábitos 2026</div>
+        <div class="pdesc">30, 60 y 90 días de seguimiento diario con estadísticas automáticas.</div>
+        <div class="pitems">
+          <div class="pi">14 hábitos personalizables</div>
+          <div class="pi">Trackers de 30, 60 y 90 días</div>
+          <div class="pi">% cumplimiento automático</div>
+          <div class="pi">Niveles 🌱 → 🔥 automáticos</div>
+        </div>
+        <div class="pfooter">
+          <div class="pinfo">Excel · Google Sheets</div>
+          <a href="https://raw.githubusercontent.com/diagnosticogeoterritorial-jpg/promptly/main/Tracker_Habitos_2026.xlsx" class="pbtn" style="background:var(--gr);color:#000" download>↓ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pcard">
+      <div class="pthumb" style="background:linear-gradient(135deg,#1A1A0D,#2A2A0D)">
+        <div class="pglow" style="--gc:rgba(245,158,11,.8)"></div>
+        <span style="position:relative;z-index:1">💰</span>
+      </div>
+      <div class="pbody">
+        <div class="ptag" style="color:var(--go)">Organizador Financiero</div>
+        <div class="ptitle">Organizador de Finanzas 2026</div>
+        <div class="pdesc">Presupuesto vs real, metas de ahorro y tracker de deudas con fórmulas automáticas.</div>
+        <div class="pitems">
+          <div class="pi">12 meses con presupuesto vs real</div>
+          <div class="pi">Metas de ahorro con progreso</div>
+          <div class="pi">Tracker de deudas automático</div>
+          <div class="pi">Dashboard y resumen anual</div>
+        </div>
+        <div class="pfooter">
+          <div class="pinfo">Excel · Google Sheets</div>
+          <a href="https://raw.githubusercontent.com/diagnosticogeoterritorial-jpg/promptly/main/Organizador_Finanzas_2026.xlsx" class="pbtn" style="background:var(--go);color:#000" download>↓ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="disc">
+    <span style="font-size:1.3rem;flex-shrink:0">💡</span>
+    <div class="disc-t">Los planners están en formato <strong>Excel (.xlsx)</strong>. Para usarlos en Google Sheets: abre Drive → "Nuevo" → "Subir archivo" → selecciona el Excel. Se abre automáticamente en Google Sheets y puedes editarlo desde el navegador sin instalar nada.</div>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html" class="nl">
+    <div class="lm"><div class="lm-r"></div><div class="lm-d"></div><div class="lm-l"></div></div>
+    <div class="nw" style="font-size:15px">ORIG<span>IN</span></div>
+  </a>
+  <div class="fc">© 2026 Origin · origin.contacto.chile@gmail.com</div>
+  <div class="fl">
+    <a href="index.html">Inicio</a>
+    <a href="index.html#tests">Tests</a>
+    <a href="index.html#prompts">Prompts</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Cómo vives realmente? — MiTest</title>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0B0F;--bg2:#13131A;--w:#F5F0FF;--g1:#2A2A38;--g4:#A0A0C0;--tl:#14B8A6;--gr:#22C55E;--or:#F97316;--rd:#EF4444;--s:'Cabinet Grotesk',sans-serif;--se:'Instrument Serif',Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--s);background:var(--bg);color:var(--w);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem}
+.wrap{max-width:640px;width:100%}
+a.back{color:var(--g4);font-size:.82rem;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;margin-bottom:2rem}
+a.back:hover{color:var(--w)}
+.pb{height:4px;background:var(--g1);border-radius:99px;margin-bottom:2.5rem;overflow:hidden}
+.pf{height:100%;background:var(--tl);border-radius:99px;transition:width .4s}
+.qn{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tl);margin-bottom:.5rem}
+.qt{font-family:var(--se);font-style:italic;font-size:clamp(1.2rem,3vw,1.65rem);line-height:1.35;margin-bottom:1.8rem}
+.opts{display:flex;flex-direction:column;gap:.75rem}
+.op{padding:1rem 1.2rem;background:var(--bg2);border:1.5px solid rgba(255,255,255,.08);border-radius:12px;cursor:pointer;transition:all .2s;font-size:.88rem;line-height:1.5;display:flex;align-items:flex-start;gap:.75rem}
+.op:hover{border-color:var(--tl);background:rgba(20,184,166,.08)}
+.op.s{border-color:var(--tl);background:rgba(20,184,166,.14)}
+.ol{width:26px;height:26px;min-width:26px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;transition:all .2s}
+.op.s .ol{background:var(--tl);border-color:var(--tl);color:#000}
+.nav{display:flex;justify-content:space-between;margin-top:1.8rem}
+.bp{padding:.65rem 1.4rem;background:transparent;border:1.5px solid rgba(255,255,255,.12);color:var(--g4);border-radius:99px;font-family:var(--s);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.bp:hover{color:var(--w);border-color:rgba(255,255,255,.3)}
+.bn{padding:.65rem 1.8rem;background:var(--tl);color:#000;border:none;border-radius:99px;font-family:var(--s);font-size:.85rem;font-weight:800;cursor:pointer;transition:all .2s;margin-left:auto}
+.bn:hover{background:#0EA5E5;transform:translateY(-1px)}
+.bn:disabled{background:var(--g1);color:#555;cursor:not-allowed;transform:none}
+.res{display:none;animation:fi .5s ease}
+@keyframes fi{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.rh{text-align:center;padding:2.5rem 1.5rem;background:var(--bg2);border-radius:18px;margin-bottom:1.2rem;border:1px solid rgba(20,184,166,.2)}
+.rl{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tl);margin-bottom:.4rem}
+.rt{font-family:var(--se);font-style:italic;font-size:1.9rem;margin-bottom:.6rem}
+.rd{color:var(--g4);font-size:.88rem;line-height:1.7;max-width:440px;margin:0 auto}
+.sec{background:var(--bg2);border-radius:12px;padding:1.2rem;margin-bottom:1rem;border:1px solid rgba(255,255,255,.07)}
+.st{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--tl);margin-bottom:.85rem}
+.area-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.85rem}
+.area-em{font-size:1.2rem;width:28px;text-align:center;flex-shrink:0}
+.area-info{flex:1}
+.area-name{font-size:.85rem;font-weight:700;margin-bottom:.3rem}
+.area-bar{height:8px;background:var(--g1);border-radius:99px;overflow:hidden;margin-bottom:.2rem}
+.area-fill{height:100%;border-radius:99px;transition:width 1s ease}
+.area-score{font-size:.72rem;font-weight:700}
+.li{display:flex;gap:.45rem;margin-bottom:.35rem;font-size:.83rem;color:var(--g4);align-items:flex-start}
+.bsh{display:block;width:100%;padding:.9rem;background:var(--tl);color:#000;border:none;border-radius:11px;font-family:var(--s);font-weight:800;font-size:.9rem;cursor:pointer;margin-top:1.2rem;transition:all .2s}
+.bsh:hover{background:#0EA5E5;transform:translateY(-1px)}
+.brt{display:block;width:100%;padding:.7rem;background:transparent;color:var(--g4);border:1.5px solid rgba(255,255,255,.1);border-radius:11px;font-family:var(--s);font-weight:600;font-size:.83rem;cursor:pointer;margin-top:.65rem;transition:all .2s}
+.brt:hover{border-color:rgba(255,255,255,.25);color:var(--w)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="index.html" class="back">← Volver a MiTest</a>
+<div id="QS">
+  <div class="pb"><div class="pf" id="PF" style="width:5%"></div></div>
+  <div class="qn" id="QN">Pregunta 1 de 20</div>
+  <div class="qt" id="QT"></div>
+  <div class="opts" id="OC"></div>
+  <div class="nav">
+    <button class="bp" id="BP" onclick="prev()" style="visibility:hidden">← Anterior</button>
+    <button class="bn" id="BN" onclick="next()" disabled>Siguiente →</button>
+  </div>
+</div>
+<div class="res" id="RS"></div>
+</div>
+<script>
+// Cada pregunta puntúa un área: S=Sueño, A=Alimentación, E=Ejercicio, R=Relaciones, T=Trabajo, M=Mental
+// Score: 0=muy bajo, 1=bajo, 2=medio, 3=alto
+const Q=[
+{t:"¿Cuántas horas duermes en promedio por noche?",o:["Menos de 5 horas","5-6 horas","6-7 horas","7-9 horas"],a:[0,1,2,3],ar:"S"},
+{t:"¿Cómo describes la calidad de tu sueño?",o:["Me despierto varias veces y amanezco cansado/a","Duermo pero no me siento descansado/a","Duermo bastante bien la mayoría de los días","Duermo profundo y amanezco con energía"],a:[0,1,2,3],ar:"S"},
+{t:"¿Cuántas veces a la semana haces ejercicio o actividad física?",o:["Casi nunca o nunca","1-2 veces por semana","3-4 veces por semana","5 o más veces por semana"],a:[0,1,2,3],ar:"E"},
+{t:"¿Qué tipo de actividad física haces con más frecuencia?",o:["No hago actividad física regular","Caminatas ocasionales o actividades ligeras","Ejercicio moderado (gym, bicicleta, natación)","Ejercicio intenso y constante"],a:[0,1,2,3],ar:"E"},
+{t:"¿Cómo describes tu alimentación cotidiana?",o:["Mayormente comida procesada, fast food o sin horarios","Intento comer bien pero con muchos altibajos","Generalmente saludable con algunas excepciones","Muy equilibrada, con frutas, verduras y proteínas"],a:[0,1,2,3],ar:"A"},
+{t:"¿Cuánta agua bebes al día?",o:["Menos de 1 litro","Entre 1 y 1.5 litros","Entre 1.5 y 2 litros","Más de 2 litros"],a:[0,1,2,3],ar:"A"},
+{t:"¿Cómo describirías la calidad de tus relaciones cercanas (amigos, familia, pareja)?",o:["Muy solitario/a, pocas conexiones reales","Algunas relaciones pero me siento desconectado/a con frecuencia","Buenas relaciones aunque podría cultivarlas más","Relaciones ricas, profundas y que me nutren"],a:[0,1,2,3],ar:"R"},
+{t:"¿Con qué frecuencia tienes conversaciones profundas o significativas?",o:["Casi nunca — las conversaciones son superficiales","A veces, pero me gustaría que fuera más frecuente","Con regularidad, al menos una vez a la semana","Casi a diario con personas que me importan"],a:[0,1,2,3],ar:"R"},
+{t:"¿Cómo manejas el estrés del día a día?",o:["Muy mal — el estrés me desborda constantemente","Con dificultad — a veces me supera","Razonablemente bien con algunas técnicas básicas","Muy bien — tengo herramientas efectivas de manejo"],a:[0,1,2,3],ar:"M"},
+{t:"¿Con qué frecuencia experimentas sensaciones de ansiedad o preocupación excesiva?",o:["Casi todo el tiempo — es mi estado habitual","Frecuentemente, varias veces a la semana","Ocasionalmente, cuando hay situaciones difíciles","Rara vez — generalmente me siento tranquilo/a"],a:[0,1,2,3],ar:"M"},
+{t:"¿Cómo describes tu satisfacción con tu trabajo o actividad principal?",o:["Muy insatisfecho/a — me drena y no lo disfruto","Algo insatisfecho/a — hay cosas que cambiaría","Bastante satisfecho/a con algunos aspectos a mejorar","Muy satisfecho/a — me motiva y le encuentro sentido"],a:[0,1,2,3],ar:"T"},
+{t:"¿Logras desconectarte del trabajo fuera del horario laboral?",o:["Nunca — el trabajo me persigue en todo momento","Con mucha dificultad — siempre hay algo pendiente","Generalmente sí, aunque a veces cuesta","Sí, tengo límites claros y los respeto"],a:[0,1,2,3],ar:"T"},
+{t:"¿Cuánto alcohol consumes a la semana?",o:["Más de 7 copas a la semana","4-6 copas a la semana","1-3 copas a la semana","No consumo alcohol o muy raramente"],a:[0,1,2,3],ar:"A"},
+{t:"¿Con qué frecuencia haces actividades que te generan placer o bienestar (hobbies, naturaleza, arte)?",o:["Casi nunca — no tengo tiempo o energía para eso","Rara vez — quisiera hacerlo más seguido","A veces, cuando tengo oportunidad","Regularmente — es parte fundamental de mi semana"],a:[0,1,2,3],ar:"M"},
+{t:"¿Cómo describes tu energía durante el día?",o:["Constantemente agotado/a sin importar cuánto duerma","Variable — hay días buenos y días muy malos","Generalmente buena con algunas caídas normales","Alta y constante la mayor parte del día"],a:[0,1,2,3],ar:"S"},
+{t:"¿Cuánto tiempo pasas en pantallas (celular, computador, TV) fuera del trabajo?",o:["Más de 5 horas diarias","3-5 horas diarias","1-3 horas diarias","Menos de 1 hora — soy consciente de mi uso"],a:[0,1,2,3],ar:"M"},
+{t:"¿Con qué frecuencia cancelas planes sociales por falta de energía o motivación?",o:["Muy frecuentemente — casi siempre cancelo","Con bastante frecuencia","Ocasionalmente cuando estoy muy ocupado/a","Rara vez — generalmente cumplo mis compromisos sociales"],a:[0,1,2,3],ar:"R"},
+{t:"¿Sientes que tu trabajo tiene propósito o que contribuye a algo que te importa?",o:["No — es solo por dinero y lo siento vacío","A veces — hay momentos de significado pero son pocos","Bastante — hay aspectos que me dan sentido","Sí — encuentro significado profundo en lo que hago"],a:[0,1,2,3],ar:"T"},
+{t:"¿Cuándo fue la última vez que te hiciste un chequeo médico preventivo?",o:["Hace más de 3 años o nunca","Hace 1-2 años","En el último año","En los últimos 6 meses"],a:[0,1,2,3],ar:"S"},
+{t:"¿Cómo describes tu relación general contigo mismo/a?",o:["Muy crítico/a — me cuesta aceptarme y tratarme bien","Algo crítico/a — a veces no me trato con amabilidad","Bastante compasivo/a — generalmente me trato bien","Muy compasivo/a — me cuido y me respeto profundamente"],a:[0,1,2,3],ar:"M"}
+];
+
+const areas={
+  S:{n:"Sueño y energía",e:"😴",color:"#8B5CF6"},
+  A:{n:"Alimentación",e:"🥗",color:"#22C55E"},
+  E:{n:"Ejercicio",e:"💪",color:"#F97316"},
+  R:{n:"Relaciones",e:"❤️",color:"#EC4899"},
+  T:{n:"Trabajo y propósito",e:"💼",color:"#14B8A6"},
+  M:{n:"Salud mental",e:"🧠",color:"#EAB308"}
+};
+
+let ans=new Array(Q.length).fill(null),cur=0;
+function render(){
+  const q=Q[cur];
+  document.getElementById('QN').textContent='Pregunta '+(cur+1)+' de '+Q.length;
+  document.getElementById('QT').textContent=q.t;
+  document.getElementById('PF').style.width=((cur+1)/Q.length*100)+'%';
+  document.getElementById('OC').innerHTML=q.o.map((o,i)=>'<div class="op '+(ans[cur]===i?'s':'')+'" onclick="sel('+i+')"><div class="ol">'+String.fromCharCode(65+i)+'</div><span>'+o+'</span></div>').join('');
+  document.getElementById('BP').style.visibility=cur===0?'hidden':'visible';
+  document.getElementById('BN').textContent=cur===Q.length-1?'Ver mi resultado →':'Siguiente →';
+  document.getElementById('BN').disabled=ans[cur]===null;
+}
+function sel(i){ans[cur]=i;render();}
+function prev(){if(cur>0){cur--;render();}}
+function next(){
+  if(ans[cur]===null)return;
+  if(cur<Q.length-1){cur++;render();}else showRes();
+}
+function showRes(){
+  const scores={S:0,A:0,E:0,R:0,T:0,M:0};
+  const counts={S:0,A:0,E:0,R:0,T:0,M:0};
+  ans.forEach((a,i)=>{if(a!==null){scores[Q[i].ar]+=Q[i].a[a];counts[Q[i].ar]++;}});
+  const pcts={};
+  Object.keys(scores).forEach(k=>{pcts[k]=counts[k]>0?Math.round((scores[k]/(counts[k]*3))*100):0;});
+  const avg=Math.round(Object.values(pcts).reduce((a,b)=>a+b,0)/6);
+  const sorted=Object.entries(pcts).sort((a,b)=>b[1]-a[1]);
+  const top3=sorted.slice(0,3);
+  const bottom3=sorted.slice(-3).reverse();
+  let nivel,emoji,desc;
+  if(avg>=80){nivel="Estilo de vida saludable";emoji="🌟";desc="Estás en un muy buen lugar. Tus hábitos de vida son sólidos y equilibrados. Tienes una base excelente para seguir creciendo.";}
+  else if(avg>=60){nivel="Estilo de vida en desarrollo";emoji="🌱";desc="Vas por buen camino con algunos hábitos bien establecidos. Hay áreas con potencial de mejora que, trabajadas, pueden transformar significativamente tu bienestar.";}
+  else if(avg>=40){nivel="Estilo de vida en construcción";emoji="🔧";desc="Hay varios aspectos de tu estilo de vida que están afectando tu bienestar. La buena noticia es que pequeños cambios consistentes tienen un impacto enorme.";}
+  else{nivel="Estilo de vida en alerta";emoji="⚠️";desc="Varias áreas de tu vida necesitan atención urgente. No es un juicio, es información valiosa. Empezar con un solo hábito puede desencadenar un cambio en cadena.";}
+
+  document.getElementById('QS').style.display='none';
+  const rs=document.getElementById('RS');
+  rs.style.display='block';
+  rs.innerHTML='<div class="rh"><div style="font-size:3rem;margin-bottom:.7rem">'+emoji+'</div><div class="rl">Tu diagnóstico de estilo de vida</div><div class="rt">'+nivel+'</div><div class="rd">'+desc+'</div><div style="margin-top:1rem;font-size:1.4rem;font-weight:800;color:#14B8A6">Puntaje general: '+avg+'%</div></div>'
+  +'<div class="sec"><div class="st">Tus 6 áreas de vida</div>'
+  +sorted.map(([k,v])=>{
+    const a=areas[k];
+    const col=v>=70?'#22C55E':v>=40?'#EAB308':'#EF4444';
+    return '<div class="area-row"><div class="area-em">'+a.e+'</div><div class="area-info"><div class="area-name">'+a.n+'</div><div class="area-bar"><div class="area-fill" style="width:0%;background:'+col+'" data-v="'+v+'"></div></div><div class="area-score" style="color:'+col+'">'+v+'%</div></div></div>';
+  }).join('')+'</div>'
+  +'<div class="sec"><div class="st">✅ Tus 3 fortalezas</div>'+top3.map(([k])=>'<div class="li"><span style="color:#22C55E;font-weight:700;flex-shrink:0">✓</span>'+areas[k].e+' '+areas[k].n+' — esta área está en un buen nivel. Sigue cultivándola.</div>').join('')+'</div>'
+  +'<div class="sec"><div class="st">🎯 Tus 3 prioridades de mejora</div>'+bottom3.map(([k,v])=>'<div class="li"><span style="color:#F97316;font-weight:700;flex-shrink:0">→</span>'+areas[k].e+' '+areas[k].n+' ('+v+'%) — aquí está tu mayor oportunidad de mejora.</div>').join('')+'</div>'
+  +'<div class="sec"><div class="st">Plan de mejora — un primer paso por área</div>'
+  +'<div style="font-size:.83rem;color:#A0A0C0;line-height:1.7">'+bottom3.map(([k])=>{
+    const tips={S:"Establece una hora fija de dormir y respétala 5 días a la semana.",A:"Agrega una porción de verdura o fruta en cada comida esta semana.",E:"Camina 20 minutos al día durante los próximos 7 días.",R:"Agenda una llamada o encuentro con alguien importante esta semana.",T:"Identifica una cosa de tu trabajo que te da energía y otra que te drena.",M:"Dedica 10 minutos al día a algo que te genere placer sin pantallas."};
+    return '<div class="li"><span style="color:#14B8A6;font-weight:700;flex-shrink:0">'+areas[k].e+'</span>'+tips[k]+'</div>';
+  }).join('')+'</div></div>'
+  +'<button class="bsh" onclick="share()">Compartir mi resultado 🔗</button>'
+  +'<button class="brt" onclick="location.reload()">Hacer el test de nuevo</button>'
+  +'<div style="text-align:center;margin-top:1.5rem"><a href="index.html" style="color:#A0A0C0;font-size:.8rem;text-decoration:none">← Ver otros tests en MiTest</a></div>';
+  setTimeout(()=>{document.querySelectorAll('.area-fill').forEach(el=>{el.style.width=el.dataset.v+'%';});},100);
+}
+function share(){
+  if(navigator.share)navigator.share({title:'Mi estilo de vida — MiTest',url:window.location.href});
+  else{navigator.clipboard.writeText(window.location.href);alert('Link copiado al portapapeles');}
+}
+render();
+</script>
+</body>
+</html>

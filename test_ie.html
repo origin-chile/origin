@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Cuál es tu inteligencia emocional? — MiTest</title>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0B0F;--bg2:#13131A;--w:#F5F0FF;--g1:#2A2A38;--g4:#A0A0C0;--or:#F97316;--gr:#22C55E;--s:'Cabinet Grotesk',sans-serif;--se:'Instrument Serif',Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--s);background:var(--bg);color:var(--w);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem}
+.wrap{max-width:640px;width:100%}
+a.back{color:var(--g4);font-size:.82rem;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;margin-bottom:2rem}
+a.back:hover{color:var(--w)}
+.pb{height:4px;background:var(--g1);border-radius:99px;margin-bottom:2.5rem;overflow:hidden}
+.pf{height:100%;background:var(--or);border-radius:99px;transition:width .4s}
+.qn{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:.5rem}
+.qt{font-family:var(--se);font-style:italic;font-size:clamp(1.2rem,3vw,1.65rem);line-height:1.35;margin-bottom:1.8rem}
+.opts{display:flex;flex-direction:column;gap:.75rem}
+.op{padding:1rem 1.2rem;background:var(--bg2);border:1.5px solid rgba(255,255,255,.08);border-radius:12px;cursor:pointer;transition:all .2s;font-size:.88rem;line-height:1.5;display:flex;align-items:flex-start;gap:.75rem}
+.op:hover{border-color:var(--or);background:rgba(249,115,22,.08)}
+.op.s{border-color:var(--or);background:rgba(249,115,22,.14)}
+.ol{width:26px;height:26px;min-width:26px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;transition:all .2s}
+.op.s .ol{background:var(--or);border-color:var(--or);color:#000}
+.nav{display:flex;justify-content:space-between;margin-top:1.8rem}
+.bp{padding:.65rem 1.4rem;background:transparent;border:1.5px solid rgba(255,255,255,.12);color:var(--g4);border-radius:99px;font-family:var(--s);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.bp:hover{color:var(--w);border-color:rgba(255,255,255,.3)}
+.bn{padding:.65rem 1.8rem;background:var(--or);color:#000;border:none;border-radius:99px;font-family:var(--s);font-size:.85rem;font-weight:800;cursor:pointer;transition:all .2s;margin-left:auto}
+.bn:hover{background:#EA580C;color:var(--w);transform:translateY(-1px)}
+.bn:disabled{background:var(--g1);color:#555;cursor:not-allowed;transform:none}
+.res{display:none;animation:fi .5s ease}
+@keyframes fi{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.rh{text-align:center;padding:2.5rem 1.5rem;background:var(--bg2);border-radius:18px;margin-bottom:1.2rem;border:1px solid rgba(249,115,22,.2)}
+.rl{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:.4rem}
+.rt{font-family:var(--se);font-style:italic;font-size:1.9rem;margin-bottom:.6rem}
+.rd{color:var(--g4);font-size:.88rem;line-height:1.7;max-width:440px;margin:0 auto}
+.sec{background:var(--bg2);border-radius:12px;padding:1.2rem;margin-bottom:1rem;border:1px solid rgba(255,255,255,.07)}
+.st{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:.85rem}
+.tr{display:flex;align-items:center;gap:.75rem;margin-bottom:.7rem}
+.tl{font-size:.8rem;color:var(--g4);width:140px;min-width:140px}
+.tb{flex:1;height:7px;background:var(--g1);border-radius:99px;overflow:hidden}
+.tf{height:100%;border-radius:99px;transition:width 1s ease}
+.tv{font-size:.72rem;font-weight:700;width:34px;text-align:right}
+.li{display:flex;gap:.45rem;margin-bottom:.35rem;font-size:.83rem;color:var(--g4);align-items:flex-start}
+.bsh{display:block;width:100%;padding:.9rem;background:var(--or);color:#000;border:none;border-radius:11px;font-family:var(--s);font-weight:800;font-size:.9rem;cursor:pointer;margin-top:1.2rem;transition:all .2s}
+.bsh:hover{background:#EA580C;color:var(--w);transform:translateY(-1px)}
+.brt{display:block;width:100%;padding:.7rem;background:transparent;color:var(--g4);border:1.5px solid rgba(255,255,255,.1);border-radius:11px;font-family:var(--s);font-weight:600;font-size:.83rem;cursor:pointer;margin-top:.65rem;transition:all .2s}
+.brt:hover{border-color:rgba(255,255,255,.25);color:var(--w)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="index.html" class="back">← Volver a MiTest</a>
+<div id="QS">
+  <div class="pb"><div class="pf" id="PF" style="width:4%"></div></div>
+  <div class="qn" id="QN">Pregunta 1 de 25</div>
+  <div class="qt" id="QT"></div>
+  <div class="opts" id="OC"></div>
+  <div class="nav">
+    <button class="bp" id="BP" onclick="prev()" style="visibility:hidden">← Anterior</button>
+    <button class="bn" id="BN" onclick="next()" disabled>Siguiente →</button>
+  </div>
+</div>
+<div class="res" id="RS"></div>
+</div>
+<script>
+// Dimensiones: AC=Autoconciencia, AR=Autorregulación, MO=Motivación, EM=Empatía, HS=Habilidades sociales
+const Q=[
+{t:"Cuando sientes una emoción intensa, ¿qué tan rápido puedes identificar exactamente qué es lo que sientes?",o:["Casi nunca sé con precisión qué estoy sintiendo","A veces lo identifico pero con dificultad","Generalmente puedo nombrarlo aunque tarda un poco","Casi siempre sé exactamente qué emoción estoy experimentando"],a:[0,1,2,3],ar:"AC"},
+{t:"Cuando cometes un error importante, tu reacción habitual es…",o:["Me destruyo — la autocrítica es muy intensa y duradera","Me afecta bastante y tarda en pasar","Lo proceso, aprendo y sigo adelante relativamente rápido","Lo reconozco, extraigo el aprendizaje y lo dejo ir con facilidad"],a:[0,1,2,3],ar:"AC"},
+{t:"Cuando estás muy estresado/a y alguien te dice algo que te molesta, tú…",o:["Reacciono de inmediato — digo o hago cosas que después lamento","Generalmente reacciono pero intento controlarlo","La mayoría de las veces puedo manejarme antes de responder","Casi siempre hago pausa y respondo desde la calma"],a:[0,1,2,3],ar:"AR"},
+{t:"¿Qué tan bien puedes manejar la frustración cuando algo no sale como esperabas?",o:["Muy mal — la frustración me desestabiliza mucho","Con dificultad — me afecta bastante y se nota","Razonablemente bien — lo manejo aunque no con facilidad","Muy bien — la frustración es información, no un obstáculo"],a:[0,1,2,3],ar:"AR"},
+{t:"Cuando tienes que hacer algo difícil o que no te gusta, ¿qué te impulsa a seguir?",o:["Muy poco — me cuesta mucho motivarme internamente","El miedo a las consecuencias más que el deseo de lograrlo","A veces la motivación interna, a veces la externa","Tengo clara mi razón de fondo y eso me impulsa sin depender de otros"],a:[0,1,2,3],ar:"MO"},
+{t:"¿Cómo describes tu persistencia cuando enfrentas obstáculos importantes?",o:["Tiendo a rendirme ante la primera dificultad seria","Me cuesta mantenerme — necesito mucho apoyo externo","Generalmente persisto aunque a veces flaqueo","Soy muy persistente — los obstáculos aumentan mi determinación"],a:[0,1,2,3],ar:"MO"},
+{t:"Cuando alguien te cuenta algo que le preocupa, tu respuesta natural es…",o:["Inmediatamente sugerirle soluciones o consejos","Escuchar pero pensando en lo que voy a responder","Intentar entender lo que siente antes de dar consejos","Validar completamente cómo se siente antes de cualquier otra cosa"],a:[0,1,2,3],ar:"EM"},
+{t:"¿Qué tan bien puedes detectar cómo se sienten otras personas sin que te lo digan?",o:["Casi nunca — me cuesta leer las emociones de otros","A veces lo noto cuando es muy evidente","Generalmente lo percibo aunque a veces me equivoco","Casi siempre — tengo alta sensibilidad a las emociones ajenas"],a:[0,1,2,3],ar:"EM"},
+{t:"En una discusión o conflicto con alguien, ¿qué tan bien puedes mantener la calma?",o:["Muy mal — los conflictos me desbordan emocionalmente","Con dificultad — me cuesta no elevar la voz o el tono","Generalmente puedo manejarme aunque requiere esfuerzo","Casi siempre puedo mantener la calma y hablar desde la razón"],a:[0,1,2,3],ar:"HS"},
+{t:"¿Qué tan fácil te resulta construir rapport rápidamente con personas nuevas?",o:["Muy difícil — me resulta incómodo y tardado","Algo difícil — me toma tiempo y no siempre funciona","Bastante bien — generalmente logro conectar rápido","Muy fácil — tengo facilidad natural para conectar con otros"],a:[0,1,2,3],ar:"HS"},
+{t:"Cuando recibes críticas o feedback negativo, tu reacción es…",o:["Me afecta profundamente y tarda días en pasar","Me afecta bastante aunque intento gestionarlo","Lo proceso con algo de incomodidad pero lo incorporo","Lo recibo como información valiosa y lo uso para mejorar"],a:[0,1,2,3],ar:"AC"},
+{t:"¿Qué tan consciente eres de cómo tu estado emocional afecta a quienes te rodean?",o:["Poco consciente — rara vez pienso en eso","Algo consciente — lo noto cuando alguien me lo señala","Bastante consciente — suelo tener eso en cuenta","Muy consciente — monitoro activamente mi impacto en otros"],a:[0,1,2,3],ar:"AC"},
+{t:"Cuando tienes ganas de dejar todo por la frustración, ¿qué sueles hacer?",o:["Efectivamente lo dejo o exploto de alguna manera","Cuento hasta diez pero a veces igual reacciono mal","Generalmente encuentro maneras de procesar sin explotar","Convierto esa energía en acción constructiva o pausa reflexiva"],a:[0,1,2,3],ar:"AR"},
+{t:"¿Qué tan bien manejas los cambios inesperados o situaciones fuera de tu control?",o:["Muy mal — la incertidumbre me genera mucha angustia","Con dificultad — los cambios me desestabilizan bastante","Razonablemente bien — me adapto aunque cuesta al inicio","Muy bien — la adaptabilidad es una de mis fortalezas"],a:[0,1,2,3],ar:"AR"},
+{t:"¿Qué te motiva más profundamente en tu vida o trabajo?",o:["El reconocimiento externo y la aprobación de otros","Las recompensas concretas como dinero o beneficios","Una mezcla de motivación interna y externa","El crecimiento personal y el sentido de contribuir a algo mayor"],a:[0,1,2,3],ar:"MO"},
+{t:"Cuando las cosas se ponen muy difíciles, ¿qué tan bien mantienes el optimismo?",o:["Muy difícil — caigo en el pesimismo con facilidad","Con dificultad — necesito mucho apoyo para mantenerme","Generalmente logro ver la luz al final del túnel","Casi siempre encuentro oportunidades incluso en las peores situaciones"],a:[0,1,2,3],ar:"MO"},
+{t:"Cuando alguien tiene una perspectiva muy diferente a la tuya, ¿cómo reaccionas?",o:["Me incomoda y tiendo a cerrarme o defender mi posición","Escucho pero internamente descarto lo que no concuerda conmigo","Intento entender aunque no siempre lo logro","Genuinamente me interesa entender su perspectiva aunque difiera"],a:[0,1,2,3],ar:"EM"},
+{t:"¿Qué tan bien puedes ponerte en el lugar de alguien que está sufriendo?",o:["Me cuesta mucho — no siempre entiendo lo que siente el otro","Algo — entiendo intelectualmente pero no siempre lo siento","Bastante bien — generalmente conecto con el dolor ajeno","Profundamente — siento genuinamente lo que los demás sienten"],a:[0,1,2,3],ar:"EM"},
+{t:"En situaciones sociales o de trabajo, ¿qué tan bien lees el ambiente o la dinámica del grupo?",o:["Muy mal — suelo no darme cuenta de lo que pasa en el grupo","A veces — lo noto cuando es muy evidente","Generalmente sí — tengo buena percepción social","Muy bien — leo las dinámicas grupales con facilidad"],a:[0,1,2,3],ar:"HS"},
+{t:"¿Qué tan hábil eres para manejar relaciones difíciles o conflictivas de manera constructiva?",o:["Muy poco — suelo evitarlas o empeorarlas","Con dificultad — a veces las mejoro, a veces las empeoro","Bastante bien — generalmente encuentro una salida constructiva","Muy bien — suelo transformar los conflictos en oportunidades"],a:[0,1,2,3],ar:"HS"},
+{t:"¿Qué tan seguido reflexionas conscientemente sobre tus emociones y su origen?",o:["Casi nunca — no tengo ese hábito","A veces, especialmente cuando algo me afecta mucho","Con bastante frecuencia — es parte de cómo proceso las cosas","Regularmente — la autoobservación es un hábito arraigado en mí"],a:[0,1,2,3],ar:"AC"},
+{t:"Cuando estás en un estado emocional difícil (tristeza, rabia, miedo), ¿qué haces?",o:["Lo suprimo o lo ignoro hasta que pasa solo","Lo expreso sin mucho filtro o lo dejo que me afecte todo el día","Intento gestionarlo con algunas técnicas básicas","Tengo estrategias efectivas y concretas para regularlo"],a:[0,1,2,3],ar:"AR"},
+{t:"¿Qué tan bien puedes diferir la gratificación inmediata por un beneficio mayor a futuro?",o:["Muy mal — me cuesta mucho resistir la gratificación inmediata","Con dificultad — a veces lo logro pero es una lucha constante","Bastante bien — generalmente puedo elegir el largo plazo","Muy bien — tengo alta capacidad de diferir la gratificación"],a:[0,1,2,3],ar:"MO"},
+{t:"Cuando alguien de tu entorno está pasando un mal momento, ¿qué tan presente estás para esa persona?",o:["Poco — me cuesta saber qué hacer o decir","A veces estoy presente pero no siempre de la manera correcta","Bastante — generalmente ofrezco un apoyo real","Mucho — tengo una capacidad genuina de estar para los demás"],a:[0,1,2,3],ar:"EM"},
+{t:"¿Qué tan capaz eres de influir positivamente en el estado emocional de un grupo?",o:["Poco — no creo tener ese tipo de influencia","A veces — en situaciones puntuales puedo ayudar","Bastante — generalmente puedo elevar el ánimo del grupo","Mucho — tengo una influencia clara y positiva en la energía grupal"],a:[0,1,2,3],ar:"HS"}
+];
+
+const dims={
+  AC:{n:"Autoconciencia",e:"🪞",desc:"Capacidad de reconocer y entender tus propias emociones, fortalezas y limitaciones.",tips:["Lleva un diario de emociones 5 minutos al día","Practica el hábito de nombrar exactamente lo que sientes","Pide feedback honesto a personas de confianza"]},
+  AR:{n:"Autorregulación",e:"🧘",desc:"Capacidad de manejar tus emociones e impulsos de manera constructiva.",tips:["Aprende técnicas de respiración para momentos de alta emoción","Practica la pausa antes de responder en situaciones de conflicto","Identifica tus desencadenantes emocionales principales"]},
+  MO:{n:"Motivación",e:"🔥",desc:"Capacidad de dirigirte hacia objetivos con energía y optimismo sostenidos.",tips:["Clarifica tu propósito de fondo — tu 'por qué' profundo","Celebra los avances pequeños, no solo los grandes logros","Construye el hábito de buscar el aprendizaje en cada fracaso"]},
+  EM:{n:"Empatía",e:"❤️",desc:"Capacidad de entender y compartir los sentimientos de otros.",tips:["Practica la escucha activa — sin interrumpir ni dar consejos antes de tiempo","Pregunta más y asume menos sobre cómo se sienten los demás","Lee ficción — aumenta científicamente la empatía"]},
+  HS:{n:"Habilidades sociales",e:"🤝",desc:"Capacidad de manejar relaciones y construir redes de manera efectiva.",tips:["Aprende a manejar conflictos desde la curiosidad, no la defensa","Desarrolla el hábito de reconocer los logros de otros en voz alta","Practica la comunicación no violenta (CNV) de Marshall Rosenberg"]}
+};
+
+let ans=new Array(Q.length).fill(null),cur=0;
+function render(){
+  const q=Q[cur];
+  document.getElementById('QN').textContent='Pregunta '+(cur+1)+' de '+Q.length;
+  document.getElementById('QT').textContent=q.t;
+  document.getElementById('PF').style.width=((cur+1)/Q.length*100)+'%';
+  document.getElementById('OC').innerHTML=q.o.map((o,i)=>'<div class="op '+(ans[cur]===i?'s':'')+'" onclick="sel('+i+')"><div class="ol">'+String.fromCharCode(65+i)+'</div><span>'+o+'</span></div>').join('');
+  document.getElementById('BP').style.visibility=cur===0?'hidden':'visible';
+  document.getElementById('BN').textContent=cur===Q.length-1?'Ver mi resultado →':'Siguiente →';
+  document.getElementById('BN').disabled=ans[cur]===null;
+}
+function sel(i){ans[cur]=i;render();}
+function prev(){if(cur>0){cur--;render();}}
+function next(){
+  if(ans[cur]===null)return;
+  if(cur<Q.length-1){cur++;render();}else showRes();
+}
+function showRes(){
+  const scores={AC:0,AR:0,MO:0,EM:0,HS:0};
+  const counts={AC:0,AR:0,MO:0,EM:0,HS:0};
+  ans.forEach((a,i)=>{if(a!==null){scores[Q[i].ar]+=Q[i].a[a];counts[Q[i].ar]++;}});
+  const pcts={};
+  Object.keys(scores).forEach(k=>{pcts[k]=counts[k]>0?Math.round((scores[k]/(counts[k]*3))*100):0;});
+  const avg=Math.round(Object.values(pcts).reduce((a,b)=>a+b,0)/5);
+  let nivel,desc;
+  if(avg>=80){nivel="IE Alta";desc="Tienes un nivel muy desarrollado de inteligencia emocional. Eres capaz de navegar situaciones emocionales complejas con efectividad y conciencia.";}
+  else if(avg>=60){nivel="IE En Desarrollo";desc="Tienes una base sólida de inteligencia emocional con áreas claras de crecimiento. Con práctica deliberada puedes alcanzar un nivel muy alto.";}
+  else if(avg>=40){nivel="IE Básica";desc="Tu inteligencia emocional está en proceso de construcción. Hay varias dimensiones que, trabajadas conscientemente, pueden transformar tus relaciones y tu desempeño.";}
+  else{nivel="IE por Desarrollar";desc="Hay mucho potencial de crecimiento emocional. La buena noticia: la IE se aprende y se desarrolla. No es un rasgo fijo.";}
+
+  document.getElementById('QS').style.display='none';
+  const rs=document.getElementById('RS');
+  rs.style.display='block';
+  rs.innerHTML='<div class="rh"><div style="font-size:3rem;margin-bottom:.7rem">🧠</div><div class="rl">Tu cociente emocional</div><div class="rt">'+nivel+'</div><div class="rd">'+desc+'</div><div style="margin-top:1rem;font-size:1.4rem;font-weight:800;color:#F97316">IE Global: '+avg+'%</div></div>'
+  +'<div class="sec"><div class="st">Tus 5 dimensiones emocionales</div>'
+  +Object.entries(pcts).map(([k,v])=>{
+    const d=dims[k];
+    const col=v>=70?'#22C55E':v>=45?'#EAB308':'#EF4444';
+    return '<div class="tr"><div class="tl">'+d.e+' '+d.n+'</div><div class="tb"><div class="tf" style="width:0%;background:'+col+'" data-v="'+v+'"></div></div><div class="tv" style="color:'+col+'">'+v+'%</div></div>';
+  }).join('')+'</div>'
+  +'<div class="sec"><div class="st">Qué significa cada dimensión</div>'
+  +Object.entries(dims).map(([k,d])=>'<div class="li"><span style="font-size:1rem">'+d.e+'</span><div><strong style="color:var(--w);font-size:.83rem">'+d.n+':</strong> <span style="font-size:.82rem;color:#A0A0C0">'+d.desc+'</span></div></div>').join('')+'</div>'
+  +'<div class="sec"><div class="st">Cómo desarrollar tu IE — ejercicios concretos</div>'
+  +Object.entries(pcts).sort((a,b)=>a[1]-b[1]).slice(0,3).map(([k])=>{
+    const d=dims[k];
+    return '<div style="margin-bottom:.9rem"><div style="font-size:.82rem;font-weight:700;margin-bottom:.4rem">'+d.e+' '+d.n+'</div>'+d.tips.map(t=>'<div class="li"><span style="color:#F97316;font-weight:700;flex-shrink:0">→</span>'+t+'</div>').join('')+'</div>';
+  }).join('')+'</div>'
+  +'<button class="bsh" onclick="share()">Compartir mi resultado 🔗</button>'
+  +'<button class="brt" onclick="location.reload()">Hacer el test de nuevo</button>'
+  +'<div style="text-align:center;margin-top:1.5rem"><a href="index.html" style="color:#A0A0C0;font-size:.8rem;text-decoration:none">← Ver otros tests en MiTest</a></div>';
+  setTimeout(()=>{document.querySelectorAll('.tf').forEach(el=>{el.style.width=el.dataset.v+'%';});},100);
+}
+function share(){
+  if(navigator.share)navigator.share({title:'Mi inteligencia emocional — MiTest',url:window.location.href});
+  else{navigator.clipboard.writeText(window.location.href);alert('Link copiado al portapapeles');}
+}
+render();
+</script>
+</body>
+</html>

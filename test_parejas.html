@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Cuál es tu lenguaje del amor? — MiTest</title>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0B0F;--bg2:#13131A;--w:#F5F0FF;--g1:#2A2A38;--g4:#A0A0C0;--pk:#EC4899;--gr:#22C55E;--or:#F97316;--s:'Cabinet Grotesk',sans-serif;--se:'Instrument Serif',Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--s);background:var(--bg);color:var(--w);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem}
+.wrap{max-width:640px;width:100%}
+a.back{color:var(--g4);font-size:.82rem;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;margin-bottom:2rem}
+a.back:hover{color:var(--w)}
+.pb{height:4px;background:var(--g1);border-radius:99px;margin-bottom:2.5rem;overflow:hidden}
+.pf{height:100%;background:var(--pk);border-radius:99px;transition:width .4s}
+.qn{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pk);margin-bottom:.5rem}
+.qt{font-family:var(--se);font-style:italic;font-size:clamp(1.2rem,3vw,1.65rem);line-height:1.35;margin-bottom:1.8rem}
+.opts{display:flex;flex-direction:column;gap:.75rem}
+.op{padding:1rem 1.2rem;background:var(--bg2);border:1.5px solid rgba(255,255,255,.08);border-radius:12px;cursor:pointer;transition:all .2s;font-size:.88rem;line-height:1.5;display:flex;align-items:flex-start;gap:.75rem}
+.op:hover{border-color:var(--pk);background:rgba(236,72,153,.08)}
+.op.s{border-color:var(--pk);background:rgba(236,72,153,.14)}
+.ol{width:26px;height:26px;min-width:26px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;transition:all .2s}
+.op.s .ol{background:var(--pk);border-color:var(--pk)}
+.nav{display:flex;justify-content:space-between;margin-top:1.8rem}
+.bp{padding:.65rem 1.4rem;background:transparent;border:1.5px solid rgba(255,255,255,.12);color:var(--g4);border-radius:99px;font-family:var(--s);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.bp:hover{color:var(--w);border-color:rgba(255,255,255,.3)}
+.bn{padding:.65rem 1.8rem;background:var(--pk);color:var(--w);border:none;border-radius:99px;font-family:var(--s);font-size:.85rem;font-weight:800;cursor:pointer;transition:all .2s;margin-left:auto}
+.bn:hover{background:#DB2777;transform:translateY(-1px)}
+.bn:disabled{background:var(--g1);color:#555;cursor:not-allowed;transform:none}
+.res{display:none;animation:fi .5s ease}
+@keyframes fi{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.rh{text-align:center;padding:2.5rem 1.5rem;background:var(--bg2);border-radius:18px;margin-bottom:1.2rem;border:1px solid rgba(236,72,153,.2)}
+.re{font-size:3rem;margin-bottom:.7rem}
+.rl{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pk);margin-bottom:.4rem}
+.rt{font-family:var(--se);font-style:italic;font-size:1.9rem;margin-bottom:.6rem}
+.rd{color:var(--g4);font-size:.88rem;line-height:1.7;max-width:440px;margin:0 auto}
+.sec{background:var(--bg2);border-radius:12px;padding:1.2rem;margin-bottom:1rem;border:1px solid rgba(255,255,255,.07)}
+.st{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pk);margin-bottom:.85rem}
+.tr{display:flex;align-items:center;gap:.75rem;margin-bottom:.65rem}
+.tl{font-size:.8rem;color:var(--g4);width:150px;min-width:150px}
+.tb{flex:1;height:6px;background:var(--g1);border-radius:99px;overflow:hidden}
+.tf{height:100%;border-radius:99px;background:var(--pk);transition:width 1s ease}
+.tv{font-size:.72rem;font-weight:700;color:var(--pk);width:32px;text-align:right}
+.li{display:flex;gap:.45rem;margin-bottom:.35rem;font-size:.83rem;color:var(--g4);align-items:flex-start}
+.bsh{display:block;width:100%;padding:.9rem;background:var(--pk);color:var(--w);border:none;border-radius:11px;font-family:var(--s);font-weight:800;font-size:.9rem;cursor:pointer;margin-top:1.2rem;transition:all .2s}
+.bsh:hover{background:#DB2777;transform:translateY(-1px)}
+.brt{display:block;width:100%;padding:.7rem;background:transparent;color:var(--g4);border:1.5px solid rgba(255,255,255,.1);border-radius:11px;font-family:var(--s);font-weight:600;font-size:.83rem;cursor:pointer;margin-top:.65rem;transition:all .2s}
+.brt:hover{border-color:rgba(255,255,255,.25);color:var(--w)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="index.html" class="back">← Volver a MiTest</a>
+<div id="QS">
+  <div class="pb"><div class="pf" id="PF" style="width:4%"></div></div>
+  <div class="qn" id="QN">Pregunta 1 de 25</div>
+  <div class="qt" id="QT"></div>
+  <div class="opts" id="OC"></div>
+  <div class="nav">
+    <button class="bp" id="BP" onclick="prev()" style="visibility:hidden">← Anterior</button>
+    <button class="bn" id="BN" onclick="next()" disabled>Siguiente →</button>
+  </div>
+</div>
+<div class="res" id="RS"></div>
+</div>
+<script>
+const Q=[
+{t:"Cuando tu pareja hace algo especial por ti (te prepara el desayuno, arregla algo en casa), tú…",o:["Me emociona más que cualquier regalo","Lo valoro pero prefiero un abrazo largo","Me alegra pero necesito también escuchar que me ama","Lo aprecio, pero prefiero que pasemos tiempo juntos","Siento que es la manera perfecta de demostrar amor"],p:["AA","TC","PO","TC","AA"]},
+{t:"¿Qué te hace sentir más amado/a en una relación?",o:["Que me digan 'te amo' y me expresen lo que sienten","Que me abracen, tomen de la mano o tengan contacto físico","Que me traigan un detalle o regalo inesperado","Que me dediquen tiempo de calidad sin distracciones","Que me ayuden con lo que necesito sin que tenga que pedir"],p:["PO","TC","RG","TC","AA"]},
+{t:"Cuando estás pasando por un momento difícil, lo que más necesitas de tu pareja es…",o:["Que me diga palabras de apoyo y aliento","Que me abrace sin decir nada","Que me sorprenda con algo que me levante el ánimo","Que se siente conmigo y simplemente esté presente","Que me ayude con algo concreto que alivie mi carga"],p:["PO","TC","RG","TC","AA"]},
+{t:"Si tu pareja olvida tu cumpleaños, lo que más te duele es…",o:["Que no dijo nada especial ni te dedicó palabras","Que no hubo contacto físico ni cercanía ese día","Que no hubo ningún regalo o detalle para celebrar","Que no planeó hacer algo juntos ese día","Que no hizo nada especial para que te sintieras cuidado/a"],p:["PO","TC","RG","TC","AA"]},
+{t:"¿Qué tipo de cita romántica preferirías?",o:["Una cena donde conversamos profundo por horas","Una tarde de abrazos y cercanía física sin salir","Un regalo sorpresa y una cena elegante","Una excursión larga solos, sin teléfonos","Que mi pareja organice todo y yo solo disfrute"],p:["PO","TC","RG","TC","AA"]},
+{t:"Cuando tu pareja te ayuda con una tarea sin que se lo pidas (lava los platos, paga una cuenta), tú…",o:["Lo aprecio pero necesito también escuchar que me ama","Me gusta pero prefiero que me abrace más","No me importa tanto como un regalo simbólico","Lo valoro pero prefiero que pase tiempo conmigo","Me siento profundamente amado/a por ese gesto"],p:["PO","TC","RG","TC","AA"]},
+{t:"La forma en que más expresas amor a tu pareja es…",o:["Diciéndole lo mucho que la valoro con palabras","Tocándola, abrazándola y buscando contacto físico","Comprándole regalos o haciéndole detalles","Planificando actividades y momentos especiales juntos","Haciendo cosas por ella sin que me lo pida"],p:["PO","TC","RG","TC","AA"]},
+{t:"Si tu pareja está muy ocupada toda la semana y no tiene tiempo para ti, lo que más extrañas es…",o:["Sus mensajes afectuosos o llamadas para decirte que te piensa","Sus abrazos y cercanía física","Esos pequeños detalles que te hacía","El tiempo de calidad que pasaban juntos","Su ayuda con las cosas del día a día"],p:["PO","TC","RG","TC","AA"]},
+{t:"¿Qué te parece más romántico?",o:["Una carta escrita a mano con palabras del corazón","Bailar juntos en la sala sin música de fondo","Recibir flores o chocolates sin ninguna razón especial","Un fin de semana solo para los dos sin interrupciones","Que tu pareja organice todo un viaje sorpresa"],p:["PO","TC","RG","TC","AA"]},
+{t:"Cuando tu pareja te halaga frente a otras personas, tú…",o:["Te sientes en las nubes — las palabras te llenan","Te sientes incómodo/a, prefieres la intimidad física","Lo valoras pero prefieres los regalos como muestra","Te alegra pero no es lo más importante para ti","Aprecias el gesto pero preferirías que te ayudara más"],p:["PO","TC","RG","TC","AA"]},
+{t:"¿Qué señal de descuido te afecta más en una relación?",o:["Que tu pareja deje de decirte cosas bonitas o de valorarte con palabras","Que ya no busque contacto físico ni cercanía","Que deje de sorprenderte con detalles o regalos","Que ya no planifiquen tiempo juntos ni hagan actividades","Que deje de ayudarte con las cosas del hogar o vida diaria"],p:["PO","TC","RG","TC","AA"]},
+{t:"Tu pareja tiene el día libre. ¿Qué esperas que haga?",o:["Que te llame o escriba diciéndote cuánto te extraña","Que vaya a verte para estar cerca físicamente","Que aparezca con un detalle o regalo sorpresa","Que planifique algo para hacer juntos ese día","Que te ayude con algo que tienes pendiente"],p:["PO","TC","RG","TC","AA"]},
+{t:"¿Qué frase de tu pareja te llegaría más al corazón?",o:["Te amo con todo lo que soy y me alegra tenerte","Solo quiero abrazarte y no soltarte nunca","Compré esto pensando en ti","Quiero pasar todo el día contigo sin distracciones","¿En qué te puedo ayudar hoy?"],p:["PO","TC","RG","TC","AA"]},
+{t:"Cuando discuten y hacen las paces, lo que más te reconforta es…",o:["Que tu pareja te diga que te ama y que lo siente","Que te abrace y todo vuelva al equilibrio físico","Que te traiga algo para celebrar la reconciliación","Que pasen tiempo juntos haciendo algo que les guste","Que haga algo concreto para demostrar que cambió"],p:["PO","TC","RG","TC","AA"]},
+{t:"¿Cómo sabes que tu pareja realmente te quiere?",o:["Por lo que me dice — sus palabras de amor y admiración","Por cómo me toca — siempre busca mi mano o me abraza","Por los detalles que me da — siempre recuerda mis gustos","Por el tiempo que me dedica — siempre priorizamos estar juntos","Por lo que hace por mí — siempre está dispuesta a ayudarme"],p:["PO","TC","RG","TC","AA"]},
+{t:"Si pudieras pedirle una sola cosa a tu pareja, sería…",o:["Que me diga más seguido lo que siente por mí","Que me abrace más y busque más contacto físico","Que me sorprenda con más detalles o gestos","Que planifiquemos más actividades y tiempo juntos","Que me ayude más con las responsabilidades del día a día"],p:["PO","TC","RG","TC","AA"]},
+{t:"Cuando ves a otras parejas, envidias…",o:["Las parejas que se dicen cosas bonitas y se expresan su amor","Las parejas que siempre están tomadas de la mano o abrazadas","Las que siempre se sorprenden con regalos y detalles","Las que hacen todo juntas — viajes, actividades, planes","Las que se apoyan y ayudan mutuamente en todo"],p:["PO","TC","RG","TC","AA"]},
+{t:"Un domingo perfecto con tu pareja sería…",o:["Hablar horas sobre la vida, los sueños y lo que sienten","Estar acurrucados todo el día sin salir de casa","Que te sorprenda con un plan especial que organizó","Salir juntos a algún lugar nuevo y desconectarse del mundo","Que cocinen juntos o hagan algo del hogar en equipo"],p:["PO","TC","RG","TC","AA"]},
+{t:"¿Qué te hace sentir más seguro/a en una relación?",o:["Saber que mi pareja me dice lo que siente abiertamente","Sentir su presencia física y cercanía constante","Que me demuestre su amor con gestos y detalles","Que siempre encuentre tiempo para estar conmigo","Que pueda contar con su ayuda cuando la necesito"],p:["PO","TC","RG","TC","AA"]},
+{t:"Si tu pareja pudiera darte un regalo perfecto, sería…",o:["Una carta emotiva que exprese todo lo que siente","Un masaje o una noche de conexión física y relajación","Algo que siempre quisiste y que recordó sin que lo mencionaras","Un viaje o experiencia para los dos","Encargarse de algo que te genera estrés o preocupación"],p:["PO","TC","RG","TC","AA"]},
+{t:"¿Qué haces tú para demostrar amor en una relación?",o:["Digo lo que siento con frecuencia y soy muy expresivo/a","Busco el contacto físico — abrazos, caricias, cercanía","Pienso en detalles y regalos que sé que le van a gustar","Planifico cosas especiales y priorizo el tiempo juntos","Ayudo en las cosas prácticas sin que me lo pidan"],p:["PO","TC","RG","TC","AA"]},
+{t:"Cuando tu pareja regresa de un viaje largo, lo primero que necesitas es…",o:["Escuchar que te extrañó y que te diga lo que siente","Un abrazo largo y sentir su presencia física","Que te traiga algo, aunque sea pequeño, como detalle","Pasar el primer día juntos sin compromisos","Que retome su ayuda con las responsabilidades compartidas"],p:["PO","TC","RG","TC","AA"]},
+{t:"¿Qué le reclamas más a una pareja en una relación?",o:["Que no te dice lo suficiente lo que siente","Que no busca contacto físico ni cercanía","Que no hace gestos ni detalles románticos","Que no dedica tiempo de calidad a la relación","Que no colabora con las responsabilidades del hogar o vida"],p:["PO","TC","RG","TC","AA"]},
+{t:"Tu pareja tiene que elegir uno de estos gestos para este fin de semana. ¿Cuál eliges?",o:["Escribirte un mensaje largo de amor un domingo en la mañana","Darte un masaje y pasar el día en contacto físico","Aparecer con una sorpresa que pensó especialmente para ti","Organizar un día completo solo para los dos sin distracciones","Hacerse cargo de todo ese fin de semana para que descanses"],p:["PO","TC","RG","TC","AA"]},
+{t:"Cuando sientes que tu pareja no te ama, ¿qué es lo que falta?",o:["Sus palabras de amor, reconocimiento y afirmación","Su cercanía física, sus abrazos y su contacto","Sus detalles y regalos que me hacen sentir especial","Su tiempo y atención exclusiva para mí","Su ayuda y apoyo en las cosas prácticas de mi vida"],p:["PO","TC","RG","TC","AA"]},
+{t:"Para ti, una relación perfecta es aquella donde…",o:["Nos decimos lo que sentimos con libertad y frecuencia","Siempre hay cercanía física y conexión corporal","Hay gestos románticos y sorpresas constantes","Siempre hay tiempo de calidad y planes compartidos","Nos ayudamos mutuamente en todo lo que necesitamos"],p:["PO","TC","RG","TC","AA"]}
+];
+const P={
+PO:{n:"Palabras de Afirmación",e:"💬",d:"Tu lenguaje del amor principal son las palabras. Te sientes amado/a cuando tu pareja te dice lo que siente, te expresa su admiración y te reconoce con palabras. Una frase sincera vale más para ti que cualquier regalo.",traits:[["Palabras de afirmación",95],["Tiempo de calidad",55],["Actos de servicio",45],["Contacto físico",40],["Regalos",35]],n2:"Palabras de Afirmación",como_dar:["Dile a tu pareja lo que admiras de ella con frecuencia","Escribe notas o mensajes cargados de significado","Agradece en voz alta las cosas que hace por ti","Exprésale lo que sientes en lugar de dar por entendido que lo sabe"],como_pedir:["Cuéntale a tu pareja que las palabras son muy importantes para ti","Pídele que te diga más seguido lo que siente","Comparte este resultado con tu pareja para que lo entienda mejor"],para_pareja:["Dile al menos una cosa bonita y genuina cada día","Escríbele mensajes afectuosos aunque estén juntos","Expresa gratitud y admiración en voz alta","Evita la crítica sin reconocimiento"],disc:"En los conflictos, las palabras hirientes te afectan más que a otros. Y las palabras de reconciliación sanan más rápido que cualquier gesto."},
+TC:{n:"Tiempo de Calidad",e:"⏱️",d:"Lo que más te nutre en una relación es la presencia total de tu pareja. No el tiempo en paralelo, sino el tiempo donde ambos están completamente presentes el uno para el otro, sin distracciones.",traits:[["Tiempo de calidad",95],["Contacto físico",60],["Palabras de afirmación",45],["Actos de servicio",40],["Regalos",30]],n2:"Tiempo de Calidad",como_dar:["Planifica actividades especiales para estar juntos","Guarda el teléfono cuando están en pareja","Propón nuevas experiencias que puedan compartir","Prioriza la relación en tu agenda"],como_pedir:["Expresa que el tiempo exclusivo es lo más importante para ti","Sugiere rituales de conexión diaria aunque sean cortos","Pide que cuando estén juntos, estén realmente juntos"],para_pareja:["Planifica una actividad semanal solo para los dos","Deja el teléfono cuando están juntos","Crea rituales de conexión diaria (cenar juntos, caminar, conversar)","Prioriza el tiempo compartido en la agenda"],disc:"En los conflictos, sentirte ignorado/a o que no eres prioridad duele más que cualquier otra cosa. El tiempo para reconciliarse es fundamental."},
+RG:{n:"Regalos y Detalles",e:"🎁",d:"Tu lenguaje del amor son los regalos y los detalles. No por el valor material, sino porque cada detalle es un símbolo tangible de que alguien pensó en ti. Los detalles te hacen sentir visible y especial.",traits:[["Regalos y detalles",90],["Palabras de afirmación",55],["Tiempo de calidad",50],["Actos de servicio",40],["Contacto físico",35]],n2:"Regalos y Detalles",como_dar:["Guarda mentalmente los gustos y deseos de tu pareja","Hazle detalles sin esperar fechas especiales","Piensa en regalos simbólicos que tengan significado personal","Compra cosas pequeñas que sabes que le van a gustar"],como_pedir:["Explica que los detalles materiales son tu forma de sentirte amado/a","Pide que te sorprendan de vez en cuando con algo pequeño","Comparte que no se trata del valor sino del pensamiento detrás"],para_pareja:["No olvides fechas importantes y celébralas con algo simbólico","Dale detalles espontáneos sin ninguna razón especial","El valor no importa — lo que importa es que pensaste en él/ella","Guarda sus gustos y úsalos para sorprenderla"],disc:"Olvidar fechas o no hacer detalles se siente como descuido. Un detalle inesperado puede reparar mucho más de lo que imaginas."},
+AA:{n:"Actos de Servicio",e:"🛠️",d:"Para ti, el amor se demuestra haciendo. Cuando alguien te ayuda, te facilita la vida o toma responsabilidades sin que se lo pidas, sientes profundamente que te ama.",traits:[["Actos de servicio",95],["Tiempo de calidad",55],["Palabras de afirmación",45],["Contacto físico",40],["Regalos",30]],n2:"Actos de Servicio",como_dar:["Ayuda a tu pareja con sus responsabilidades sin que te lo pida","Haz cosas que alivien su carga del día a día","Anticipa lo que necesita antes de que lo pida","Cuida los detalles prácticos de la vida compartida"],como_pedir:["Explica que la ayuda concreta es como recibes amor","Comparte qué cosas específicas te harían sentir más cuidado/a","Agradece cuando tu pareja hace cosas por ti y díselo"],para_pareja:["Busca activamente en qué puede ayudarlo/a sin que lo pida","Toma responsabilidades del hogar o vida compartida","Un gesto práctico de ayuda tiene un impacto enorme en él/ella","Recuerda que para esta persona, hacer = amar"],disc:"Cuando tu pareja no ayuda o deja todo para ti, lo sientes como abandono. Un acto concreto de ayuda puede sanar un conflicto más que mil palabras."}
+};
+let ans=new Array(Q.length).fill(null),cur=0;
+function render(){
+  const q=Q[cur];
+  document.getElementById('QN').textContent='Pregunta '+(cur+1)+' de '+Q.length;
+  document.getElementById('QT').textContent=q.t;
+  document.getElementById('PF').style.width=((cur+1)/Q.length*100)+'%';
+  document.getElementById('OC').innerHTML=q.o.map((o,i)=>'<div class="op '+(ans[cur]===i?'s':'')+'" onclick="sel('+i+')"><div class="ol">'+String.fromCharCode(65+i)+'</div><span>'+o+'</span></div>').join('');
+  document.getElementById('BP').style.visibility=cur===0?'hidden':'visible';
+  document.getElementById('BN').textContent=cur===Q.length-1?'Ver mi resultado →':'Siguiente →';
+  document.getElementById('BN').disabled=ans[cur]===null;
+}
+function sel(i){ans[cur]=i;render();}
+function prev(){if(cur>0){cur--;render();}}
+function next(){
+  if(ans[cur]===null)return;
+  if(cur<Q.length-1){cur++;render();}else showRes();
+}
+function showRes(){
+  const cnt={PO:0,TC:0,RG:0,AA:0};
+  ans.forEach((a,i)=>{if(a!==null)cnt[Q[i].p[a]]++;});
+  const w=Object.entries(cnt).sort((a,b)=>b[1]-a[1])[0][0];
+  const p=P[w];
+  document.getElementById('QS').style.display='none';
+  const rs=document.getElementById('RS');
+  rs.style.display='block';
+  rs.innerHTML='<div class="rh"><div class="re">'+p.e+'</div><div class="rl">Tu lenguaje del amor principal</div><div class="rt">'+p.n+'</div><div class="rd">'+p.d+'</div></div>'
+  +'<div class="sec"><div class="st">Tus dimensiones</div>'+p.traits.map(([l,v])=>'<div class="tr"><div class="tl">'+l+'</div><div class="tb"><div class="tf" style="width:0%" data-v="'+v+'"></div></div><div class="tv">'+v+'%</div></div>').join('')+'</div>'
+  +'<div class="sec"><div class="st">Cómo dar amor según tu lenguaje</div>'+p.como_dar.map(x=>'<div class="li"><span style="color:#EC4899;font-weight:700;flex-shrink:0">♥</span>'+x+'</div>').join('')+'</div>'
+  +'<div class="sec"><div class="st">Cómo pedirle a tu pareja que te ame</div>'+p.como_pedir.map(x=>'<div class="li"><span style="color:var(--gr);font-weight:700;flex-shrink:0">→</span>'+x+'</div>').join('')+'</div>'
+  +'<div class="sec"><div class="st">Qué necesita saber tu pareja</div>'+p.para_pareja.map(x=>'<div class="li"><span style="color:var(--or);font-weight:700;flex-shrink:0">✓</span>'+x+'</div>').join('')+'<div style="margin-top:.9rem;padding:.9rem;background:rgba(236,72,153,.08);border-radius:9px;border:1px solid rgba(236,72,153,.2);font-size:.83rem;color:#A0A0C0;line-height:1.6">'+p.disc+'</div></div>'
+  +'<button class="bsh" onclick="share()">Compartir mi resultado 🔗</button>'
+  +'<button class="brt" onclick="location.reload()">Hacer el test de nuevo</button>'
+  +'<div style="text-align:center;margin-top:1.5rem"><a href="index.html" style="color:#A0A0C0;font-size:.8rem;text-decoration:none">← Ver otros tests en MiTest</a></div>';
+  setTimeout(()=>{document.querySelectorAll('.tf').forEach(el=>{el.style.width=el.dataset.v+'%';});},100);
+}
+function share(){
+  if(navigator.share)navigator.share({title:'Mi lenguaje del amor — MiTest',url:window.location.href});
+  else{navigator.clipboard.writeText(window.location.href);alert('Link copiado al portapapeles');}
+}
+render();
+</script>
+</body>
+</html>

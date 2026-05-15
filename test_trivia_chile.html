@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Cuánto sabes de Chile? — MiTest</title>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0B0F;--bg2:#13131A;--w:#F5F0FF;--g1:#2A2A38;--g4:#A0A0C0;--yw:#EAB308;--gr:#22C55E;--rd:#EF4444;--s:'Cabinet Grotesk',sans-serif;--se:'Instrument Serif',Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--s);background:var(--bg);color:var(--w);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem}
+.wrap{max-width:640px;width:100%}
+a.back{color:var(--g4);font-size:.82rem;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;margin-bottom:2rem}
+a.back:hover{color:var(--w)}
+.pb{height:4px;background:var(--g1);border-radius:99px;margin-bottom:2.5rem;overflow:hidden}
+.pf{height:100%;background:var(--yw);border-radius:99px;transition:width .4s}
+.qn{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--yw);margin-bottom:.5rem}
+.qcat{display:inline-block;font-size:.68rem;font-weight:600;padding:.15rem .5rem;border-radius:99px;background:rgba(234,179,8,.15);color:var(--yw);border:1px solid rgba(234,179,8,.25);margin-bottom:.5rem}
+.qt{font-family:var(--se);font-style:italic;font-size:clamp(1.15rem,3vw,1.6rem);line-height:1.35;margin-bottom:1.8rem}
+.opts{display:flex;flex-direction:column;gap:.7rem}
+.op{padding:.95rem 1.2rem;background:var(--bg2);border:1.5px solid rgba(255,255,255,.08);border-radius:12px;cursor:pointer;transition:all .2s;font-size:.88rem;line-height:1.5;display:flex;align-items:flex-start;gap:.75rem}
+.op:hover:not(.disabled){border-color:var(--yw);background:rgba(234,179,8,.08)}
+.op.correct{border-color:var(--gr)!important;background:rgba(34,197,94,.15)!important}
+.op.wrong{border-color:var(--rd)!important;background:rgba(239,68,68,.15)!important}
+.op.show-correct{border-color:var(--gr)!important;background:rgba(34,197,94,.08)!important}
+.op.disabled{cursor:default}
+.ol{width:26px;height:26px;min-width:26px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;transition:all .2s;flex-shrink:0}
+.op.correct .ol{background:var(--gr);border-color:var(--gr);color:#000}
+.op.wrong .ol{background:var(--rd);border-color:var(--rd)}
+.explain{margin-top:1rem;padding:.85rem;background:rgba(255,255,255,.04);border-radius:9px;border:1px solid rgba(255,255,255,.08);font-size:.82rem;color:var(--g4);line-height:1.6;display:none}
+.nav{display:flex;justify-content:space-between;margin-top:1.8rem}
+.bp{padding:.65rem 1.4rem;background:transparent;border:1.5px solid rgba(255,255,255,.12);color:var(--g4);border-radius:99px;font-family:var(--s);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.bp:hover{color:var(--w);border-color:rgba(255,255,255,.3)}
+.bn{padding:.65rem 1.8rem;background:var(--yw);color:#000;border:none;border-radius:99px;font-family:var(--s);font-size:.85rem;font-weight:800;cursor:pointer;transition:all .2s;margin-left:auto;display:none}
+.bn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.res{display:none;animation:fi .5s ease}
+@keyframes fi{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.rh{text-align:center;padding:2.5rem 1.5rem;background:var(--bg2);border-radius:18px;margin-bottom:1.2rem}
+.rl{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--yw);margin-bottom:.4rem}
+.rt{font-family:var(--se);font-style:italic;font-size:1.9rem;margin-bottom:.6rem}
+.rd{color:var(--g4);font-size:.88rem;line-height:1.7;max-width:440px;margin:0 auto}
+.score-big{font-size:3.5rem;font-weight:900;color:var(--yw);line-height:1}
+.sec{background:var(--bg2);border-radius:12px;padding:1.2rem;margin-bottom:1rem;border:1px solid rgba(255,255,255,.07)}
+.st{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--yw);margin-bottom:.85rem}
+.q-review{padding:.75rem;border-radius:9px;margin-bottom:.6rem;font-size:.82rem}
+.q-review.ok{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2)}
+.q-review.fail{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2)}
+.bsh{display:block;width:100%;padding:.9rem;background:var(--yw);color:#000;border:none;border-radius:11px;font-family:var(--s);font-weight:800;font-size:.9rem;cursor:pointer;margin-top:1.2rem;transition:all .2s}
+.bsh:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.brt{display:block;width:100%;padding:.7rem;background:transparent;color:var(--g4);border:1.5px solid rgba(255,255,255,.1);border-radius:11px;font-family:var(--s);font-weight:600;font-size:.83rem;cursor:pointer;margin-top:.65rem;transition:all .2s}
+.brt:hover{border-color:rgba(255,255,255,.25);color:var(--w)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="index.html" class="back">← Volver a MiTest</a>
+<div id="QS">
+  <div class="pb"><div class="pf" id="PF" style="width:3.3%"></div></div>
+  <div class="qn" id="QN">Pregunta 1 de 30</div>
+  <div class="qcat" id="QCAT"></div>
+  <div class="qt" id="QT"></div>
+  <div class="opts" id="OC"></div>
+  <div class="explain" id="EX"></div>
+  <div class="nav">
+    <div></div>
+    <button class="bn" id="BN" onclick="next()">Siguiente →</button>
+  </div>
+</div>
+<div class="res" id="RS"></div>
+</div>
+<script>
+const Q=[
+{t:"¿Cuál es el nombre oficial completo de Chile?",c:"República de Chile",o:["Estado de Chile","República de Chile","Nación Chilena","Commonwealth de Chile"],cat:"Política",ex:"El nombre oficial del país es República de Chile, establecido en la Constitución Política."},
+{t:"¿En qué año se celebró la independencia de Chile?",c:"1818",o:["1810","1812","1818","1821"],cat:"Historia",ex:"El 18 de septiembre de 1810 fue la Primera Junta Nacional de Gobierno, pero la independencia formal fue declarada el 12 de febrero de 1818 por Bernardo O'Higgins."},
+{t:"¿Cuál es el volcán activo más alto del mundo y se encuentra en Chile?",c:"Ojos del Salado",o:["Villarrica","Ojos del Salado","Llaima","Calbuco"],cat:"Geografía",ex:"El Ojos del Salado (6.893 m) es el volcán activo más alto del mundo, ubicado en la frontera entre Chile y Argentina."},
+{t:"¿Cómo se llama el desierto más árido del mundo no polar, ubicado en el norte de Chile?",c:"Atacama",o:["Patagonia","Atacama","Antofagasta","Salar de Uyuni"],cat:"Geografía",ex:"El Desierto de Atacama es considerado el más árido del mundo (fuera de los polos), con algunas zonas sin lluvia registrada por siglos."},
+{t:"¿Quién fue el primer presidente de Chile?",c:"Bernardo O'Higgins",o:["José Miguel Carrera","Bernardo O'Higgins","Manuel Blanco Encalada","Ramón Freire"],cat:"Historia",ex:"Bernardo O'Higgins fue el primer Director Supremo de Chile (equivalente a presidente) tras la Independencia, gobernando entre 1817 y 1823."},
+{t:"¿Cuántas regiones tiene Chile actualmente?",c:"16",o:["13","15","16","17"],cat:"Geografía",ex:"Chile tiene 16 regiones desde 2007, cuando se crearon las regiones de Los Ríos y Arica y Parinacota, y en 2021 se creó Ñuble."},
+{t:"¿Cuál es el río más largo de Chile?",c:"Loa",o:["Biobío","Maule","Loa","Baker"],cat:"Geografía",ex:"El río Loa es el más largo de Chile con 443 km, ubicado en la Región de Antofagasta."},
+{t:"¿En qué año Chile ganó la Copa América por primera vez?",c:"2015",o:["2011","2014","2015","2016"],cat:"Deporte",ex:"Chile ganó su primera Copa América en 2015, derrotando a Argentina en la final por penales. Repitió el logro en 2016."},
+{t:"¿Cómo se llama el poeta chileno que ganó el Premio Nobel de Literatura en 1971?",c:"Pablo Neruda",o:["Vicente Huidobro","Gabriela Mistral","Pablo Neruda","Nicanor Parra"],cat:"Cultura",ex:"Pablo Neruda (Ricardo Eliécer Neftalí Reyes Basoalto) ganó el Premio Nobel de Literatura en 1971. Gabriela Mistral fue la primera latinoamericana en ganarlo, en 1945."},
+{t:"¿Qué significa 'guagua' en Chile?",c:"Bebé",o:["Autobús","Bebé","Perro","Dinero"],cat:"Chilenismos",ex:"En Chile, 'guagua' significa bebé o infante. En otros países hispanohablantes la palabra tiene otros significados (como autobús en Cuba)."},
+{t:"¿Cuál es el plato típico chileno hecho con maíz, pollo, carne y aceitunas?",c:"Pastel de choclo",o:["Cazuela","Empanada","Pastel de choclo","Charquicán"],cat:"Gastronomía",ex:"El pastel de choclo es uno de los platos más icónicos de la gastronomía chilena, cocinado en una paila de greda con maíz molido, carne, pollo, cebolla y aceitunas."},
+{t:"¿Cómo se llama el baile nacional de Chile?",c:"Cueca",o:["Marinera","Cueca","Joropo","Cumbia"],cat:"Cultura",ex:"La cueca es el baile nacional de Chile desde 1979. Representa el cortejo entre un gallo y una gallina y se baila con pañuelos."},
+{t:"¿Cuál es la moneda oficial de Chile?",c:"Peso chileno",o:["Escudo","Peso chileno","Condor","Austral"],cat:"Economía",ex:"El peso chileno (CLP) es la moneda oficial desde 1975. Antes existió el escudo (1960-1975)."},
+{t:"¿Dónde está el famoso observatorio astronómico ALMA?",c:"Desierto de Atacama",o:["Patagonia","Valle del Elqui","Desierto de Atacama","Antártica chilena"],cat:"Ciencia",ex:"ALMA (Atacama Large Millimeter/submillimeter Array) está ubicado en el Llano de Chajnantor, en el Desierto de Atacama, a 5.000 metros de altitud."},
+{t:"¿Qué significa decirle a alguien 'está con la caña' en Chile?",c:"Tiene resaca",o:["Está muy cansado","Tiene resaca","Está borracho","Tiene hambre"],cat:"Chilenismos",ex:"'Estar con la caña' o simplemente 'la caña' es la resaca o malestar del día siguiente de haber bebido en exceso."},
+{t:"¿Cuál es el lago más grande de Chile?",c:"Lago General Carrera",o:["Lago Villarrica","Lago Llanquihue","Lago General Carrera","Lago Rapel"],cat:"Geografía",ex:"El Lago General Carrera (conocido como Lago Buenos Aires en Argentina) es el lago más grande de Chile con 1.850 km², compartido con Argentina."},
+{t:"¿En qué ciudad de Chile se encuentra el Palacio de La Moneda?",c:"Santiago",o:["Valparaíso","Concepción","Santiago","Viña del Mar"],cat:"Política",ex:"El Palacio de La Moneda, sede del gobierno de Chile, está ubicado en el centro histórico de Santiago."},
+{t:"¿Cuál es el mineral de mayor exportación de Chile?",c:"Cobre",o:["Hierro","Litio","Cobre","Oro"],cat:"Economía",ex:"Chile es el mayor productor y exportador de cobre del mundo, concentrando cerca del 25-27% de la producción mundial."},
+{t:"¿Quién fue Gabriela Mistral?",c:"Primera latinoamericana en ganar el Nobel de Literatura",o:["Primera presidenta de Chile","Primera latinoamericana en ganar el Nobel de Literatura","Famosa pintora chilena","Fundadora de la Universidad de Chile"],cat:"Cultura",ex:"Gabriela Mistral (Lucila de María del Perpetuo Socorro Godoy Alcayaga) fue la primera latinoamericana en ganar el Premio Nobel de Literatura, en 1945."},
+{t:"¿Qué es el 'completo' en la gastronomía chilena?",c:"Un hot dog con ingredientes típicos",o:["Un sandwich de mechada","Un hot dog con ingredientes típicos","Una empanada con todo","Un plato de mariscos"],cat:"Gastronomía",ex:"El completo es un hot dog chileno caracterizado por llevar mayonesa, tomate y chucrut (el 'italiano' lleva tomate, palta y mayonesa con los colores de la bandera italiana)."},
+{t:"¿Cuántos metros de longitud tiene Chile aproximadamente de norte a sur?",c:"4.300 km",o:["2.500 km","3.200 km","4.300 km","5.100 km"],cat:"Geografía",ex:"Chile tiene aproximadamente 4.270 km de longitud de norte a sur (desde Arica hasta el Cabo de Hornos), siendo uno de los países más largos y angostos del mundo."},
+{t:"¿Qué significa 'al tiro' en el español chileno?",c:"Inmediatamente",o:["Con calma","Despacio","Inmediatamente","Tal vez"],cat:"Chilenismos",ex:"'Al tiro' es una expresión chilena que significa inmediatamente, de inmediato o enseguida."},
+{t:"¿En qué océano desemboca la Patagonia chilena?",c:"Océano Pacífico",o:["Océano Atlántico","Océano Pacífico","Mar de Drake","Océano Glacial Antártico"],cat:"Geografía",ex:"La Patagonia chilena está bañada principalmente por el Océano Pacífico en su costa oeste."},
+{t:"¿Cuál es el pisco? ¿De dónde es originario según Chile?",c:"Un aguardiente de uva originario de Chile",o:["Un vino espumante peruano","Un aguardiente de uva originario de Chile","Una cerveza artesanal andina","Un licor de pera chileno"],cat:"Gastronomía",ex:"Chile y Perú disputan el origen del pisco. Chile sostiene que el pisco tiene origen en el Valle de Elqui y en la ciudad de Pisco Elqui. La denominación de origen es un tema de larga disputa entre ambos países."},
+{t:"¿Cuál es el nombre del congreso de Chile?",c:"Congreso Nacional",o:["Parlamento de Chile","Senado Federal","Congreso Nacional","Asamblea Legislativa"],cat:"Política",ex:"El Congreso Nacional de Chile está ubicado en Valparaíso y está compuesto por la Cámara de Diputadas y Diputados y el Senado."},
+{t:"¿Qué es la 'teletón' en Chile?",c:"Una campaña benéfica de televisión para personas con discapacidad",o:["Un canal de televisión infantil","Una campaña benéfica de televisión para personas con discapacidad","Un festival de música folklórica","Un programa de variedades de los 80s"],cat:"Cultura",ex:"La Teletón es una campaña solidaria televisada anual que recauda fondos para los institutos de rehabilitación TELETON que atienden a niños y jóvenes con discapacidades motoras."},
+{t:"¿Dónde está la Isla de Pascua?",c:"En el Océano Pacífico, a 3.700 km de la costa",o:["En el Canal de Beagle","En el Océano Pacífico, a 3.700 km de la costa","Frente a Valparaíso","En el archipiélago de Chiloé"],cat:"Geografía",ex:"La Isla de Pascua (Rapa Nui en lengua rapanui) está ubicada en el Océano Pacífico, a unos 3.700 km al oeste de las costas chilenas, siendo uno de los lugares habitados más remotos del mundo."},
+{t:"¿Qué son los 'moáis'?",c:"Estatuas de piedra de la Isla de Pascua",o:["Instrumentos musicales mapuches","Estatuas de piedra de la Isla de Pascua","Dioses de la mitología aymara","Barcos de madera chilotes"],cat:"Cultura",ex:"Los moáis son estatuas monolíticas talladas por el pueblo rapa nui entre los siglos XIII y XVI. Hay más de 900 moáis en la Isla de Pascua."},
+{t:"¿Cuál es el pueblo originario más numeroso de Chile?",c:"Mapuche",o:["Aymara","Rapa Nui","Mapuche","Atacameño"],cat:"Historia",ex:"El pueblo mapuche es el más numeroso de los pueblos originarios de Chile, representando aproximadamente el 9-10% de la población total del país."},
+{t:"¿Cómo se llama la Bandera de Chile?",c:"La Estrella Solitaria",o:["La Bandera del Sur","La Estrella del Pacífico","La Estrella Solitaria","El Tricolor Andino"],cat:"Política",ex:"La bandera nacional de Chile se conoce popularmente como 'La Estrella Solitaria' por la estrella de cinco puntas en el cuadrado rojo de su cantón."}
+];
+
+let ans=new Array(Q.length).fill(null),score=0,cur=0,answered=false;
+function render(){
+  const q=Q[cur];
+  document.getElementById('QN').textContent='Pregunta '+(cur+1)+' de '+Q.length;
+  document.getElementById('QCAT').textContent=q.cat;
+  document.getElementById('QT').textContent=q.t;
+  document.getElementById('PF').style.width=((cur+1)/Q.length*100)+'%';
+  answered=ans[cur]!==null;
+  document.getElementById('OC').innerHTML=q.o.map((o,i)=>{
+    let cls='op';
+    if(answered){
+      cls+=' disabled';
+      if(o===q.c) cls+=' show-correct';
+      if(ans[cur]===i){cls+=o===q.c?' correct':' wrong';}
+    }
+    return '<div class="'+cls+'" onclick="sel('+i+')"><div class="ol">'+String.fromCharCode(65+i)+'</div><span>'+o+'</span></div>';
+  }).join('');
+  const ex=document.getElementById('EX');
+  ex.style.display=answered?'block':'none';
+  ex.textContent='💡 '+q.ex;
+  document.getElementById('BN').style.display=answered?'block':'none';
+  document.getElementById('BN').textContent=cur===Q.length-1?'Ver mi resultado →':'Siguiente →';
+}
+function sel(i){
+  if(answered)return;
+  ans[cur]=i;
+  if(Q[cur].o[i]===Q[cur].c)score++;
+  answered=true;
+  render();
+}
+function next(){
+  if(cur<Q.length-1){cur++;render();}else showRes();
+}
+function showRes(){
+  const pct=Math.round(score/Q.length*100);
+  let nivel,emoji,desc;
+  if(pct>=90){nivel="Experto en Chile 🇨🇱";emoji="🏆";desc="¡Impresionante! Tienes un conocimiento enciclopédico de Chile. Podrías ganar un concurso nacional de trivia.";}
+  else if(pct>=70){nivel="Chileno de corazón";emoji="⭐";desc="Muy buen puntaje. Conoces bien tu país en historia, geografía y cultura. Algunos detalles aún te sorprenden.";}
+  else if(pct>=50){nivel="Chileno en desarrollo";emoji="🌱";desc="Conocimiento intermedio. Tienes una base sólida pero hay aspectos de Chile que vale la pena explorar más.";}
+  else if(pct>=30){nivel="Chilenófilo en proceso";emoji="📚";desc:"Aún queda mucho por descubrir sobre Chile. La buena noticia es que cada pregunta que fallaste te enseñó algo nuevo.";}
+  else{nivel="Recién llegado a Chile";emoji="✈️";desc:"Chile tiene mucho que contarte. Las preguntas que fallaste son un excelente punto de partida para conocer mejor este largo y angosto país.";}
+  document.getElementById('QS').style.display='none';
+  const rs=document.getElementById('RS');
+  rs.style.display='block';
+  rs.innerHTML='<div class="rh" style="border:1px solid rgba(234,179,8,.2)"><div style="font-size:3rem;margin-bottom:.7rem">'+emoji+'</div><div class="rl">Tu nivel de chilenidad</div><div class="rt">'+nivel+'</div><div class="score-big" style="margin:.8rem 0">'+score+'/'+Q.length+'</div><div style="font-size:1rem;font-weight:700;color:var(--yw);margin-bottom:.7rem">'+pct+'% correcto</div><div class="rd">'+desc+'</div></div>'
+  +'<div class="sec"><div class="st">Resumen de tus respuestas</div>'
+  +Q.map((q,i)=>{
+    const ok=ans[i]!==null&&q.o[ans[i]]===q.c;
+    return '<div class="q-review '+(ok?'ok':'fail')+'"><div style="display:flex;align-items:flex-start;gap:.5rem"><span style="font-weight:700;flex-shrink:0">'+(ok?'✓':'✗')+'</span><div><div style="font-size:.8rem;font-weight:600;margin-bottom:.2rem">'+q.t+'</div><div style="font-size:.75rem;color:#A0A0C0">Correcta: '+q.c+'</div></div></div></div>';
+  }).join('')+'</div>'
+  +'<button class="bsh" onclick="share()">Compartir mi resultado 🔗</button>'
+  +'<button class="brt" onclick="location.reload()">Jugar de nuevo</button>'
+  +'<div style="text-align:center;margin-top:1.5rem"><a href="index.html" style="color:#A0A0C0;font-size:.8rem;text-decoration:none">← Ver otros tests en MiTest</a></div>';
+}
+function share(){
+  if(navigator.share)navigator.share({title:'Saqué '+score+'/30 en el Trivia Chile — MiTest',url:window.location.href});
+  else{navigator.clipboard.writeText(window.location.href);alert('Link copiado al portapapeles');}
+}
+render();
+</script>
+</body>
+</html>

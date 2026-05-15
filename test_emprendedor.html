@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Qué tipo de emprendedor eres? — MiTest</title>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0B0F;--bg2:#13131A;--w:#F5F0FF;--g1:#2A2A38;--g3:#7070A0;--g4:#A0A0C0;--pu:#8B5CF6;--gr:#22C55E;--or:#F97316;--s:'Cabinet Grotesk',sans-serif;--se:'Instrument Serif',Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--s);background:var(--bg);color:var(--w);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem}
+.wrap{max-width:640px;width:100%}
+a.back{color:var(--g4);font-size:.82rem;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;margin-bottom:2rem}
+a.back:hover{color:var(--w)}
+.pb{height:4px;background:var(--g1);border-radius:99px;margin-bottom:2.5rem;overflow:hidden}
+.pf{height:100%;background:var(--pu);border-radius:99px;transition:width .4s}
+.qn{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pu);margin-bottom:.5rem}
+.qt{font-family:var(--se);font-style:italic;font-size:clamp(1.2rem,3vw,1.65rem);line-height:1.35;margin-bottom:1.8rem}
+.opts{display:flex;flex-direction:column;gap:.75rem}
+.op{padding:1rem 1.2rem;background:var(--bg2);border:1.5px solid rgba(255,255,255,.08);border-radius:12px;cursor:pointer;transition:all .2s;font-size:.88rem;line-height:1.5;display:flex;align-items:flex-start;gap:.75rem}
+.op:hover{border-color:var(--pu);background:rgba(139,92,246,.08)}
+.op.s{border-color:var(--pu);background:rgba(139,92,246,.14)}
+.ol{width:26px;height:26px;min-width:26px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;transition:all .2s}
+.op.s .ol{background:var(--pu);border-color:var(--pu)}
+.nav{display:flex;justify-content:space-between;margin-top:1.8rem}
+.bp{padding:.65rem 1.4rem;background:transparent;border:1.5px solid rgba(255,255,255,.12);color:var(--g4);border-radius:99px;font-family:var(--s);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.bp:hover{color:var(--w);border-color:rgba(255,255,255,.3)}
+.bn{padding:.65rem 1.8rem;background:var(--pu);color:var(--w);border:none;border-radius:99px;font-family:var(--s);font-size:.85rem;font-weight:800;cursor:pointer;transition:all .2s;margin-left:auto}
+.bn:hover{background:#7C3AED;transform:translateY(-1px)}
+.bn:disabled{background:var(--g1);color:var(--g3);cursor:not-allowed;transform:none}
+.res{display:none;animation:fi .5s ease}
+@keyframes fi{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.rh{text-align:center;padding:2.5rem 1.5rem;background:var(--bg2);border-radius:18px;margin-bottom:1.2rem;border:1px solid rgba(139,92,246,.2)}
+.re{font-size:3rem;margin-bottom:.7rem}
+.rl{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pu);margin-bottom:.4rem}
+.rt{font-family:var(--se);font-style:italic;font-size:1.9rem;margin-bottom:.6rem}
+.rd{color:var(--g4);font-size:.88rem;line-height:1.7;max-width:440px;margin:0 auto}
+.tags{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:.8rem;justify-content:center}
+.tag{padding:.22rem .65rem;border-radius:99px;font-size:.7rem;font-weight:600;background:rgba(139,92,246,.12);color:var(--pu);border:1px solid rgba(139,92,246,.25)}
+.sec{background:var(--bg2);border-radius:12px;padding:1.2rem;margin-bottom:1rem;border:1px solid rgba(255,255,255,.07)}
+.st{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pu);margin-bottom:.85rem}
+.tr{display:flex;align-items:center;gap:.75rem;margin-bottom:.65rem}
+.tl{font-size:.8rem;color:var(--g4);width:130px;min-width:130px}
+.tb{flex:1;height:6px;background:var(--g1);border-radius:99px;overflow:hidden}
+.tf{height:100%;border-radius:99px;background:var(--pu);transition:width 1s ease}
+.tv{font-size:.72rem;font-weight:700;color:var(--pu);width:32px;text-align:right}
+.li{display:flex;gap:.45rem;margin-bottom:.35rem;font-size:.83rem;color:var(--g4);align-items:flex-start}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.65rem;margin-top:.65rem}
+.fc{padding:.7rem;background:rgba(255,255,255,.03);border-radius:9px;border:1px solid rgba(255,255,255,.07);text-align:center}
+.fn{font-size:.8rem;font-weight:700}
+.fr{font-size:.68rem;color:var(--g4);margin-top:.15rem}
+.bsh{display:block;width:100%;padding:.9rem;background:var(--pu);color:var(--w);border:none;border-radius:11px;font-family:var(--s);font-weight:800;font-size:.9rem;cursor:pointer;margin-top:1.2rem;transition:all .2s}
+.bsh:hover{background:#7C3AED;transform:translateY(-1px)}
+.brt{display:block;width:100%;padding:.7rem;background:transparent;color:var(--g4);border:1.5px solid rgba(255,255,255,.1);border-radius:11px;font-family:var(--s);font-weight:600;font-size:.83rem;cursor:pointer;margin-top:.65rem;transition:all .2s}
+.brt:hover{border-color:rgba(255,255,255,.25);color:var(--w)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="index.html" class="back">← Volver a MiTest</a>
+<div id="QS">
+  <div class="pb"><div class="pf" id="PF" style="width:5%"></div></div>
+  <div class="qn" id="QN">Pregunta 1 de 20</div>
+  <div class="qt" id="QT"></div>
+  <div class="opts" id="OC"></div>
+  <div class="nav">
+    <button class="bp" id="BP" onclick="prev()" style="visibility:hidden">← Anterior</button>
+    <button class="bn" id="BN" onclick="next()" disabled>Siguiente →</button>
+  </div>
+</div>
+<div class="res" id="RS"></div>
+</div>
+<script>
+const Q=[
+{t:"Cuando tienes una idea de negocio, lo primero que haces es…",o:["Imaginar el futuro que podría crear y contársela a todos","Hacer un plan con pasos y fechas concretas","Llamar a personas clave que podrían ayudarme","Investigar si realmente tiene potencial en el mercado","Pensar cómo hacerla única y diferente visualmente"],p:["V","E","C","A","CR"]},
+{t:"Tu mayor fortaleza como emprendedor/a es…",o:["Inspirar y motivar a otros con mi visión","Ejecutar proyectos sin dejarlos a medias","Construir redes y relaciones estratégicas","Tomar decisiones basadas en datos","Crear productos o experiencias memorables"],p:["V","E","C","A","CR"]},
+{t:"Cuando hay un problema urgente en el negocio, tú…",o:["Propones una solución completamente nueva","Lo resuelves paso a paso sin perder el control","Buscas a alguien que ya haya resuelto algo similar","Analizas las causas antes de actuar","Lo conviertes en una oportunidad creativa"],p:["V","E","C","A","CR"]},
+{t:"¿Qué tipo de negocio te atrae más?",o:["Startups disruptivas que cambien industrias","Negocios escalables con procesos bien definidos","Empresas basadas en comunidad y colaboración","Negocios respaldados por investigación y datos","Marcas con identidad fuerte y propuesta creativa"],p:["V","E","C","A","CR"]},
+{t:"Tu mayor miedo al emprender es…",o:["Que la visión se pierda en los detalles operacionales","No tener disciplina suficiente para ejecutar","Quedarse sin las personas y aliados correctos","Tomar una decisión sin suficiente información","Crear algo que no sea único ni memorable"],p:["V","E","C","A","CR"]},
+{t:"¿Cómo manejas la incertidumbre?",o:["Me emociona — significa posibilidades infinitas","La gestiono con planificación y métricas claras","La enfrento apoyándome en mi red de contactos","La reduzco investigando cada escenario posible","La transformo en energía creativa"],p:["V","E","C","A","CR"]},
+{t:"En un equipo, naturalmente asumes el rol de…",o:["El que define a dónde vamos y por qué","El que asegura que las cosas se hagan","El que conecta personas y crea sinergias","El que evalúa si el plan tiene sentido","El que hace que todo se vea y sienta bien"],p:["V","E","C","A","CR"]},
+{t:"¿Con qué frase te identificas más?",o:["El futuro no se predice, se crea","El éxito está en los detalles de la ejecución","Tu red es tu valor neto","En Dios confío, al resto le pido datos","Si no es hermoso, no es suficientemente bueno"],p:["V","E","C","A","CR"]},
+{t:"¿Cuándo te sientes más en tu zona de flujo?",o:["Cuando lanzo algo nuevo y visiono el futuro","Cuando completo tareas y veo resultados concretos","Cuando construyo relaciones en reuniones","Cuando analizo datos y encuentro patrones","Cuando diseño o creo algo desde cero"],p:["V","E","C","A","CR"]},
+{t:"¿Cuál es tu relación con el dinero como emprendedor?",o:["Es el combustible para escalar la visión","Es el resultado de la eficiencia operacional","Es lo que fluye cuando das valor a las personas","Es la métrica más objetiva de que algo funciona","Es la consecuencia de crear algo que la gente ama"],p:["V","E","C","A","CR"]},
+{t:"¿Cómo tomas decisiones importantes?",o:["Siguiendo mi intuición y visión de largo plazo","Revisando el proceso y los datos disponibles","Consultando con personas de confianza","Analizando todas las variables posibles","Eligiendo lo que se siente más auténtico y creativo"],p:["V","E","C","A","CR"]},
+{t:"Tu estilo de liderazgo es…",o:["Inspiracional: motivo con la visión del futuro","Directivo: doy instrucciones claras y espero resultados","Colaborativo: construyo consenso e involucro a todos","Estratégico: decido basándome en análisis","Creativo: dejo espacio para experimentar"],p:["V","E","C","A","CR"]},
+{t:"Cuando algo no funciona en tu negocio, tú…",o:["Lo descarto y pivoto hacia una nueva visión","Lo optimizo proceso por proceso","Busco feedback de personas clave del mercado","Analizo los datos para entender qué falló","Lo rediseño completamente desde otra perspectiva"],p:["V","E","C","A","CR"]},
+{t:"¿Qué admiras más en otros emprendedores?",o:["Ver oportunidades donde otros ven problemas","Disciplina para ejecutar sin excusas cada día","Habilidad para conectar con las personas correctas","Rigor para decidir basándose en evidencia","Valentía de crear algo completamente original"],p:["V","E","C","A","CR"]},
+{t:"Tu producto o servicio ideal sería…",o:["Algo que transforme una industria completa","Algo que funcione como un reloj suizo, sin fallas","Algo construido con y para una comunidad","Algo respaldado por investigación sólida","Algo reconocido por su diseño único"],p:["V","E","C","A","CR"]},
+{t:"¿Cómo manejas tu tiempo?",o:["Me enfoco en ideas grandes y delego lo operacional","Tengo un sistema de productividad estricto","Paso tiempo reuniéndome y construyendo relaciones","Bloqueo tiempo para análisis y planificación","Trabajo en ráfagas intensas de creatividad"],p:["V","E","C","A","CR"]},
+{t:"El mayor error que podrías cometer es…",o:["Perderme en detalles y olvidar la visión","Procrastinar por querer ser perfecto","No invertir suficiente en construir relaciones","Actuar sin información y tomar riesgos innecesarios","Crear algo seguro cuando debí arriesgarme más"],p:["V","E","C","A","CR"]},
+{t:"¿Qué tipo de mentor buscarías?",o:["Un visionario que haya cambiado el mundo","Un operador excepcional que sepa escalar negocios","Un conector con acceso a las redes correctas","Un analista con experiencia en datos y estrategia","Un creativo que haya construido marcas icónicas"],p:["V","E","C","A","CR"]},
+{t:"Para ti, el éxito en negocios significa…",o:["Haber creado algo que cambió cómo el mundo funciona","Haber construido un sistema que funciona sin ti","Haber impactado positivamente a una comunidad","Haber tomado las mejores decisiones posibles","Haber creado algo tan único que sea inimitable"],p:["V","E","C","A","CR"]},
+{t:"Si describieras tu emprendimiento ideal en una palabra, sería…",o:["Transformador","Eficiente","Comunitario","Riguroso","Memorable"],p:["V","E","C","A","CR"]}
+];
+const P={
+V:{n:"El Visionario",e:"🔭",d:"Tienes una capacidad extraordinaria para ver el futuro antes de que llegue. Tu mente vive en el largo plazo y encuentras oportunidades donde otros solo ven problemas. Eres el tipo de emprendedor que cambia industrias enteras.",traits:[["Pensamiento estratégico",92],["Capacidad de inspirar",88],["Tolerancia al riesgo",85],["Ejecución operacional",45],["Atención al detalle",38]],f:["Visión de largo plazo","Capacidad para inspirar equipos","Alta tolerancia a la ambigüedad","Pensamiento disruptivo"],d2:["Dificultad para ejecutar detalles operacionales","Impaciencia con lo rutinario","Tendencia a cambiar de idea antes de terminar"],r:["Rodéate de un ejecutor de confianza que complemente tu visión","Aprende a comunicar tu visión en términos concretos y medibles","Establece checkpoints de ejecución sin perder el gran objetivo"],fm:[{n:"Elon Musk",r:"Tesla, SpaceX"},{n:"Steve Jobs",r:"Apple"},{n:"Jeff Bezos",r:"Amazon"},{n:"Oprah Winfrey",r:"Harpo Productions"}],t:["Disruptivo","Estratégico","Inspiracional","Long-term"]},
+E:{n:"El Ejecutor",e:"⚙️",d:"Eres la persona que hace que las cosas pasen. Mientras otros hablan, tú actúas. Tu superpoder es convertir ideas en resultados concretos con disciplina y consistencia.",traits:[["Disciplina de ejecución",95],["Orientación a resultados",90],["Gestión del tiempo",88],["Pensamiento visionario",42],["Creatividad disruptiva",40]],f:["Disciplina y constancia","Llevar proyectos hasta el final","Orientación a métricas","Gestión eficiente de recursos"],d2:["Puede perderse en lo operacional y olvidar la estrategia","Dificultad para delegar por perfeccionismo","Resistencia al cambio cuando los procesos funcionan"],r:["Trabaja con un visionario que te dé el norte estratégico","Aprende a delegar sin perder el control de calidad","Reserva tiempo semanal para pensar en estrategia"],fm:[{n:"Tim Cook",r:"Apple CEO"},{n:"Sheryl Sandberg",r:"Meta COO"},{n:"Indra Nooyi",r:"PepsiCo"},{n:"Carlos Slim",r:"Telmex"}],t:["Disciplinado","Eficiente","Orientado a resultados","Consistente"]},
+C:{n:"El Conector",e:"🤝",d:"Tu red de relaciones es tu activo más valioso. Tienes una habilidad natural para conectar personas, construir comunidades y crear alianzas estratégicas.",traits:[["Inteligencia social",95],["Construcción de redes",92],["Empatía y escucha",88],["Ejecución independiente",48],["Análisis de datos",40]],f:["Red de contactos de alto valor","Habilidad para crear alianzas","Empatía y comunicación","Capacidad para movilizar a otros"],d2:["Dificultad para decir no a su red","Puede depender demasiado de otros para ejecutar","Dificultad para avanzar sin apoyo"],r:["Documenta y nutre sistemáticamente tu red","Aprende a ejecutar solo cuando sea necesario","Usa tu red para conseguir talento que te complemente"],fm:[{n:"Richard Branson",r:"Virgin Group"},{n:"Tony Hsieh",r:"Zappos"},{n:"Arianna Huffington",r:"HuffPost"},{n:"Gary Vaynerchuk",r:"VaynerMedia"}],t:["Social","Colaborativo","Influyente","Networker"]},
+A:{n:"El Analista",e:"📊",d:"Tomas decisiones basadas en evidencia y datos. Tu pensamiento estructurado y analítico te permite evitar errores que otros cometen por impulso.",traits:[["Pensamiento analítico",95],["Rigor en decisiones",90],["Gestión del riesgo",88],["Tolerancia a la ambigüedad",42],["Velocidad de decisión",38]],f:["Decisiones basadas en datos","Alta capacidad de análisis","Gestión del riesgo","Pensamiento estructurado"],d2:["Parálisis por análisis antes de actuar","Dificultad con información incompleta","Tendencia a subestimar el factor humano"],r:["Establece tiempo máximo para analizar antes de decidir","Combina análisis con intuición en alta incertidumbre","Trabaja con personas orientadas a la acción"],fm:[{n:"Warren Buffett",r:"Berkshire Hathaway"},{n:"Ray Dalio",r:"Bridgewater"},{n:"Reed Hastings",r:"Netflix"},{n:"Sundar Pichai",r:"Google"}],t:["Analítico","Riguroso","Estratégico","Data-driven"]},
+CR:{n:"El Creativo",e:"🎨",d:"Tu diferenciador es la originalidad. Creas productos, marcas y experiencias que la gente recuerda. En un mercado saturado, tu capacidad de hacer algo único es un activo extraordinario.",traits:[["Pensamiento creativo",95],["Identidad de marca",92],["Innovación de producto",88],["Disciplina operacional",40],["Análisis de datos",38]],f:["Creatividad e innovación","Construcción de marcas memorables","Diseño de experiencias únicas","Diferenciación de mercado"],d2:["Dificultad para sistematizar y escalar","Resistencia a procesos repetitivos","Puede priorizar estética sobre viabilidad comercial"],r:["Busca un socio operacional que escale lo que creas","Aprende fundamentos de negocio para hacer viable tu creatividad","Desarrolla disciplina para terminar proyectos antes de empezar el siguiente"],fm:[{n:"Virgil Abloh",r:"Off-White"},{n:"Yvon Chouinard",r:"Patagonia"},{n:"Jony Ive",r:"Apple Design"},{n:"Sara Blakely",r:"Spanx"}],t:["Creativo","Original","Visionario visual","Innovador"]}
+};
+let ans=new Array(Q.length).fill(null),cur=0;
+function render(){
+  const q=Q[cur];
+  document.getElementById('QN').textContent='Pregunta '+(cur+1)+' de '+Q.length;
+  document.getElementById('QT').textContent=q.t;
+  document.getElementById('PF').style.width=((cur+1)/Q.length*100)+'%';
+  document.getElementById('OC').innerHTML=q.o.map((o,i)=>'<div class="op '+(ans[cur]===i?'s':'')+'" onclick="sel('+i+')"><div class="ol">'+String.fromCharCode(65+i)+'</div><span>'+o+'</span></div>').join('');
+  document.getElementById('BP').style.visibility=cur===0?'hidden':'visible';
+  document.getElementById('BN').textContent=cur===Q.length-1?'Ver mi resultado →':'Siguiente →';
+  document.getElementById('BN').disabled=ans[cur]===null;
+}
+function sel(i){ans[cur]=i;render();}
+function prev(){if(cur>0){cur--;render();}}
+function next(){
+  if(ans[cur]===null)return;
+  if(cur<Q.length-1){cur++;render();}else showRes();
+}
+function showRes(){
+  const cnt={V:0,E:0,C:0,A:0,CR:0};
+  ans.forEach((a,i)=>{if(a!==null)cnt[Q[i].p[a]]++;});
+  const w=Object.entries(cnt).sort((a,b)=>b[1]-a[1])[0][0];
+  const p=P[w];
+  document.getElementById('QS').style.display='none';
+  const rs=document.getElementById('RS');
+  rs.style.display='block';
+  rs.innerHTML='<div class="rh"><div class="re">'+p.e+'</div><div class="rl">Tu perfil emprendedor</div><div class="rt">'+p.n+'</div><div class="rd">'+p.d+'</div><div class="tags">'+p.t.map(t=>'<span class="tag">'+t+'</span>').join('')+'</div></div>'
+  +'<div class="sec"><div class="st">Tus dimensiones</div>'+p.traits.map(([l,v])=>'<div class="tr"><div class="tl">'+l+'</div><div class="tb"><div class="tf" style="width:0%" data-v="'+v+'"></div></div><div class="tv">'+v+'%</div></div>').join('')+'</div>'
+  +'<div class="sec"><div class="st">Tus fortalezas</div>'+p.f.map(x=>'<div class="li"><span style="color:var(--gr);font-weight:700;flex-shrink:0">✓</span>'+x+'</div>').join('')+'</div>'
+  +'<div class="sec"><div class="st">Tus desafíos</div>'+p.d2.map(x=>'<div class="li"><span style="color:var(--or);font-weight:700;flex-shrink:0">→</span>'+x+'</div>').join('')+'</div>'
+  +'<div class="sec"><div class="st">Recomendaciones para ti</div>'+p.r.map((x,i)=>'<div style="display:flex;gap:.65rem;margin-bottom:.75rem;align-items:flex-start"><div style="width:22px;height:22px;min-width:22px;border-radius:50%;background:var(--pu);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700">'+(i+1)+'</div><span style="font-size:.83rem;color:var(--g4);line-height:1.6">'+x+'</span></div>').join('')+'</div>'
+  +'<div class="sec"><div class="st">Emprendedores con tu perfil</div><div class="fg">'+p.fm.map(f=>'<div class="fc"><div class="fn">'+f.n+'</div><div class="fr">'+f.r+'</div></div>').join('')+'</div></div>'
+  +'<button class="bsh" onclick="share()">Compartir mi resultado 🔗</button>'
+  +'<button class="brt" onclick="location.reload()">Hacer el test de nuevo</button>'
+  +'<div style="text-align:center;margin-top:1.5rem"><a href="index.html" style="color:var(--g4);font-size:.8rem;text-decoration:none">← Ver otros tests en MiTest</a></div>';
+  setTimeout(()=>{document.querySelectorAll('.tf').forEach(el=>{el.style.width=el.dataset.v+'%';});},100);
+}
+function share(){
+  if(navigator.share)navigator.share({title:'Soy El '+document.querySelector('.rt').textContent+' — MiTest',url:window.location.href});
+  else{navigator.clipboard.writeText(window.location.href);alert('Link copiado al portapapeles');}
+}
+render();
+</script>
+</body>
+</html>
